@@ -1,4 +1,26 @@
-# HOW I THINK
+✦︎✦︎✦︎ Meta Apollo Logos //
+
+# ✮˙๋࣭⭑ MODEL // HOW I THINK
+
+![](BUILD/assets/design/chassis/focus-rail.svg)
+
+> **STATE //** active \~\~ **VIEW //** standalone public cognitive map
+
+> **A public map of recurring cognitive operations, with separate layers for the current model, evidence, and archaeology.**
+
+### 🧭 MAP // REPOSITORY
+
+![](BUILD/assets/design/chassis/nav-rail.svg)
+
+// [🧭 ATLAS](./ATLAS/) \~\~ // [✮˙๋࣭⭑ MODEL](./MODEL/) \~\~ // [🖨 BUILD](./BUILD/) \~\~ // [⚒ DEV](./DEV/) \~\~ // [🖳 OPERATE](./OPERATE/) \~\~ // [⊹ ࣪ℼ˖ EVIDENCE](./EVIDENCE/) \~\~ // [࣪⋅˚🕮‧₊˚ ARCHIVE](./ARCHIVE/)
+
+---
+
+### ★⋆˙ CORE // EXISTING MODEL
+
+The existing public model and `dump/` archaeology remain in place. Meta Apollo rooms provide a stable semantic map over those layers.
+
+---
 
 ### A public map of how I appear to think, learn, remember, communicate, and solve problems.
 
