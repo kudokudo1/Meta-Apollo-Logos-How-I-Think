@@ -115,6 +115,23 @@ If it survives that alignment, then the disagreement is more likely to be substa
 
 > **Same channel. Same show. Then argue about the picture.**
 
+### 4.1 Epistemic Generosity
+
+Before deciding that another person is irrational, dishonest, or incomprehensible, try to reconstruct the camera that would make their behavior make sense.
+
+Possible missing variables include:
+
+- different information
+- different incentives
+- different history
+- different constraints
+- different definitions
+- different goals
+
+Understanding the camera is not the same as agreeing with the conclusion.
+
+> **Model first. Judge second.**
+
 ---
 
 # Part II — Building and Moving Information
@@ -204,6 +221,26 @@ X in another environment
 
 If the relationships survive useful transformations, the analogy may be carrying real structure.
 
+### 7.1 Analogy Tomography
+
+No single analogy needs to explain the whole object.
+
+Different analogies can expose different coordinates.
+
+The useful operation is:
+
+```
+rotate the object
+→ compare multiple projections
+→ identify overlap
+→ inspect residual differences
+→ infer the hidden structure
+```
+
+The analogies are not the territory.
+
+They are purpose-specific views of the same underlying thing.
+
 ---
 
 ## 8. Cross-Domain Transfer
@@ -245,6 +282,18 @@ expand
 → update
 → recompress
 ```
+
+### 9.1 Semantic Compression Integrity
+
+Not every compression is good.
+
+A good compressed label removes detail that does not matter **without destroying the relationships needed later**.
+
+High-integrity compression preserves the structure required to reconstruct the model.
+
+Low-integrity compression makes something shorter by flattening distinctions that were actually load-bearing.
+
+> **Compress the representation, not the relation.**
 
 ---
 
@@ -479,6 +528,30 @@ We know how it works.
 
 Not every Ghost deserves immediate resolution.
 
+### 17.1 Classified Uncertainty
+
+I do not need certainty everywhere.
+
+I often need to know **what kind of uncertainty remains**.
+
+A useful distinction is:
+
+```
+unknown unknown
+→ potentially loud
+
+relevant unknown with unclear consequences
+→ loud
+
+known unknown with bounded consequences
+→ manageable
+
+known unknowable with no useful intervention
+→ park / archive
+```
+
+Classifying uncertainty can make it cheap enough to leave unresolved.
+
 ---
 
 ## 18. Action as Sensor
@@ -524,6 +597,20 @@ Prefer:
 A useful rule is:
 
 > **Act strongly while preserving a return path.**
+
+### 20.1 Completion Boundary
+
+Decomposition can continue forever.
+
+A project therefore needs a deliberate stopping rule:
+
+> **the minimum architecture coherent enough to use now while preserving clean extension paths**
+
+This is not pretending deeper relationships do not exist.
+
+It is deciding that they do not all deserve implementation **this release**.
+
+The deeper model can remain true while the current system stops at a justified boundary.
 
 ---
 
@@ -641,6 +728,32 @@ Two sentences can look similar while changing an important relationship.
 The goal is not identical wording.
 
 The goal is preserving the intended structure.
+
+### 24.1 Adaptive Codec / Minimum Sufficient Subgraph
+
+Communication can be treated as:
+
+```
+sender model
+→ compressed representation
+→ receiver reconstruction
+```
+
+The best explanation is not always the shortest sentence.
+
+It is the **smallest amount of structure that lets the receiver reconstruct the intended model**.
+
+When that fails:
+
+```
+send compressed packet
+→ watch for parse failure
+→ add the missing dependency
+→ switch representation if needed
+→ test again
+```
+
+The explanation adapts to the receiver instead of merely repeating itself louder.
 
 ---
 
