@@ -1,6 +1,10 @@
-# How I Think
+# HOW I THINK
 
-> **A public map of the recurring operations I use to understand, learn, communicate, remember, and act.**
+### A public map of the recurring operations I use to understand, learn, communicate, remember, and act.
+
+**WORKING MODEL · PUBLIC INTERFACE**
+
+> **Do not mistake the camera for the world.**
 
 This is a working model, not a diagnosis and not a claim that every mechanism here is unique to me.
 
@@ -8,7 +12,23 @@ Most of these operations are ordinary human operations. What may be more persona
 
 The map is allowed to be wrong.
 
-> **Do not mistake the camera for the world.**
+---
+
+## Navigation
+
+| Part | Shelf |
+| --- | --- |
+| **I** | [Core Operators](#part-i--core-operators) |
+| **II** | [Building and Moving Information](#part-ii--building-and-moving-information) |
+| **III** | [Learning, Attention, and Memory](#part-iii--learning-attention-and-memory) |
+| **IV** | [Uncertainty and Action](#part-iv--uncertainty-and-action) |
+| **V** | [External Systems](#part-v--external-systems) |
+| **VI** | [Human Expression](#part-vi--human-expression) |
+| **VII** | [Limits and Evidence](#part-vii--limits-and-evidence) |
+
+**Fast path:** Parts I–II contain the core machinery. The later parts show how that machinery appears in learning, action, tools, communication, art, and evidence.
+
+> **Design rule:** unfinished does not mean unusable. This document should remain legible, navigable, and intentional while the model evolves.
 
 ---
 
