@@ -1,34 +1,42 @@
-# How I Think
+# HOW I THINK
 
-> **A public map of how I appear to think, learn, remember, communicate, and solve problems.**
+### A public map of how I appear to think, learn, remember, communicate, and solve problems.
 
-This repository uses a three-layer structure.
+**WORKING MODEL · PUBLIC INTERFACE**
 
-## 1. Map
+> **Map → Evidence → Archaeology**
 
-Start here:
+The point of this repository is simple: you should not have to read the entire history of the model before you are allowed to understand it.
 
-**[HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md)**
+## Start here
 
-This is the forward-facing version: the current model, organized by function instead of discovery order.
+### **[Read the public model →](./HOW-I-THINK-PUBLIC.md)**
 
-## 2. Evidence
+The public document is the current forward-facing map: organized by function, compressed enough to read, and allowed to change when better evidence appears.
 
-The evidence layer is being curated.
+## Repository structure
 
-Selected conversation excerpts, artifacts, predictions, corrections, project examples, and other clean proof stories will eventually sit beneath the claims they support.
+| Layer | Question | Location | Status |
+| --- | --- | --- | --- |
+| **01 · Map** | *What does the model currently say?* | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) | **Live** |
+| **02 · Evidence** | *Why should I believe this claim?* | Curated from the archive | **In progress** |
+| **03 · Archaeology** | *How did this model develop?* | [`dump/`](./dump/) | **Preserved** |
 
-Until that pass is complete, the source material for those evidence pieces remains preserved in `dump/`.
+### 01 · Map
 
-The evidence layer should answer:
+Readable, compressed, forward-facing.
 
-> **"Why should I believe this claim?"**
+This is the interface another person should be able to understand without first inheriting years of conversations, corrections, metaphors, and project history.
 
-without requiring the reader to consume the entire development history.
+### 02 · Evidence
 
-## 3. Archive
+Selected conversation excerpts, artifacts, predictions, corrections, project examples, outside sources, and other clean proof stories will sit beneath the claims they support.
 
-The `dump/` directory preserves the long-form record:
+Until that pass is complete, their source material remains preserved in `dump/`.
+
+### 03 · Archaeology
+
+The archive keeps the long-form record:
 
 - earlier models
 - evidence ledgers
@@ -40,14 +48,16 @@ The `dump/` directory preserves the long-form record:
 - developing interpretations
 - historical artifacts
 
-If the public map is the claim, and the evidence layer is the supporting material, the archive is:
-
 > **You wanted the 50-page book. Here is the fucking Bible.**
 
-## Reading rule
+---
 
-> **Map → Evidence → Archaeology**
+## Design rule
 
-Do not start with the archive unless you actually need the provenance.
+**Unfinished does not mean unusable, illegible, or ugly.**
 
-The point of this repository is not to make someone read the entire history of the model before they are allowed to understand it.
+Presentation is part of the system from the beginning. The map should remain navigable and coherent while it evolves; polish is not something added only after the thinking is finished.
+
+The archive can be messy.
+
+The interface should not be.
