@@ -2,7 +2,7 @@
 
 > **A public map of how I appear to think, learn, remember, communicate, and solve problems.**
 
-This repository now has three levels.
+This repository uses a three-layer structure.
 
 ## 1. Map
 
@@ -14,15 +14,31 @@ This is the forward-facing version: the current model, organized by function ins
 
 ## 2. Evidence
 
-The detailed working documents at the repository root contain evidence, proof stories, corrections, examples, and developing interpretations.
+The evidence layer is being curated.
 
-They are **not required reading** for understanding the public model.
+Selected conversation excerpts, artifacts, predictions, corrections, project examples, and other clean proof stories will eventually sit beneath the claims they support.
 
-Over time, selected excerpts can be promoted into a cleaner evidence layer beneath individual claims.
+Until that pass is complete, the source material for those evidence pieces remains preserved in `dump/`.
+
+The evidence layer should answer:
+
+> **"Why should I believe this claim?"**
+
+without requiring the reader to consume the entire development history.
 
 ## 3. Archive
 
-The `dump/` directory preserves the long-form development history: earlier models, conversations, technical material, abandoned explanations, and the rest of the archaeological record.
+The `dump/` directory preserves the long-form record:
+
+- earlier models
+- evidence ledgers
+- proof stories
+- conversations
+- technical material
+- corrections
+- abandoned explanations
+- developing interpretations
+- historical artifacts
 
 If the public map is the claim, and the evidence layer is the supporting material, the archive is:
 
