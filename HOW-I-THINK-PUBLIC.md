@@ -132,6 +132,27 @@ observe behavior
 
 Once the generator is understood, many facts become cheaper to learn because they attach to the same parent structure.
 
+
+### 5.1 Affordance-First Learning
+
+Sometimes I understand what a thing **enables** before I know its formal vocabulary or conventional system.
+
+The order can look like:
+
+```
+observe capability
+→ recognize what it affords
+→ connect it to a live problem
+→ use it
+→ learn the official details afterward
+```
+
+This can make learning look backwards from a conventional curriculum.
+
+The capability enters the graph first.
+
+The terminology catches up later.
+
 ---
 
 ## 6. Play It Out
@@ -287,6 +308,23 @@ Then:
 
 Old material can become newly meaningful without having been consciously active the entire time.
 
+
+### 12.1 Wrong Before Right
+
+Detecting an error and knowing the correction are separate operations.
+
+Sometimes I can tell:
+
+> **That relation is wrong.**
+
+before I can say:
+
+> **This is where it actually belongs.**
+
+That unresolved state is useful information.
+
+It can remain as a Ghost until the missing relationship becomes available.
+
 ---
 
 ## 13. Multiple Salience Indexes
@@ -386,6 +424,25 @@ History matters because it preserves:
 > **History is cached future computation.**
 
 Corrections should preserve enough provenance to explain how the model changed.
+
+
+### 16.1 The Route Can Survive Before the Explanation
+
+Under fatigue, overload, or heavy compression, precise vocabulary and full explanation can degrade before useful navigation does.
+
+I may lose the canonical words while still being able to:
+
+- return to the correct object
+- reopen the right context
+- continue the relevant task
+- recognize what matters
+- follow a familiar route
+
+So:
+
+> **losing the words is not always the same as losing the model.**
+
+A compressed relational or sensory address can remain usable even when full semantic decompression is expensive.
 
 ---
 
@@ -622,6 +679,31 @@ A creator can transform these through:
 Or:
 
 > **Reality passes through a person and comes back out differently.**
+
+
+### 25.1 Artifacts as Autobiographical Landmarks
+
+Personally meaningful artifacts can act as retrieval keys.
+
+An old drawing, notebook, object, arrangement, or project may reopen much more than the object itself:
+
+```
+artifact
+→ recognition
+→ place / time
+→ why it was made
+→ surrounding interests
+→ related people or projects
+→ larger autobiographical context
+```
+
+This is one reason art and physical space can function as more than storage.
+
+They can preserve **addresses back into prior states of self**.
+
+The claim is not that the recovered memory is perfectly complete or perfectly accurate.
+
+The useful observation is that small external cues can trigger large relational reconstruction.
 
 ---
 
