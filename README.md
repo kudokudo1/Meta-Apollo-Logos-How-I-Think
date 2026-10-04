@@ -4,9 +4,13 @@
 
 ![](BUILD/assets/design/chassis/focus-rail.svg)
 
+![Meta Apollo Logos // How I Think](./BUILD/assets/design/how-i-think-banner.svg)
+
 > **STATE //** active \~\~ **VIEW //** standalone public cognitive map
 
-> **A public map of recurring cognitive operations, with separate layers for the current model, evidence, and archaeology.**
+A living map of the relationship between an artist and the models he uses to understand, transform, and act on the world — tracing how perception, compression, memory, analogy, tools, evidence, communication, and action interact, while preserving enough evidence and history to test, correct, and reshape the map itself.
+
+**FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [TASKBARS](https://github.com/kudokudo1/taskbars-post-apollo)
 
 ### 🧭 MAP // REPOSITORY
 
