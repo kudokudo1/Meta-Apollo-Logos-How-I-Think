@@ -1,6 +1,6 @@
 ✦︎✦︎✦︎ Meta Apollo Logos //
 
-# ✮˙๋࣭⭑ MODEL // HOW I THINK
+# ✮˙๋࣭⭑ META APOLLO LOGOS // HOW I THINK
 
 ![](BUILD/assets/design/chassis/focus-rail.svg)
 
