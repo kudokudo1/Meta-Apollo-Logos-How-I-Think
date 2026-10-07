@@ -8,7 +8,7 @@
 
 > **STATE //** active \~\~ **VIEW //** standalone public cognitive map
 
-A living map of the relationship between an artist and the models he uses to understand, transform, and act on the world — tracing how perception, compression, memory, analogy, tools, evidence, communication, and action interact, while preserving enough evidence and history to test, correct, and reshape the map itself.
+A living map of the relationship between an artist and the models he uses to understand, transform, and act on the world — and a practical interface for humans and AI systems that need to understand how to communicate, collaborate, plan, debug, preserve continuity, and work across the Meta Apollo // Post-Apollo family.
 
 **FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [TASKBARS](https://github.com/kudokudo1/taskbars-post-apollo)
 
@@ -20,9 +20,23 @@ A living map of the relationship between an artist and the models he uses to und
 
 ---
 
-### ★⋆˙ CORE // EXISTING MODEL
+### ★⋆˙ CORE // HUMAN + AI FRONT DOOR
 
-The existing public model and `dump/` archaeology remain in place. Meta Apollo rooms provide a stable semantic map over those layers.
+The existing public model and `dump/` archaeology remain in place.
+
+This repository now also serves as the **central operator interface** for working with the user: humans can understand the model, AI agents can load practical collaboration rules, and either can descend into evidence / archaeology only when the compressed layer is insufficient.
+
+### ⌯✦ START // PICK THE PATH YOU NEED
+
+| NEED | START HERE |
+|---|---|
+| Understand how I think / communicate | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) |
+| Enter as an AI / agent | [AGENTS.md](./AGENTS.md) |
+| See practical working guidance | [OPERATE](./OPERATE/) |
+| See where the rules came from | [ATLAS // SOURCE MAP](./ATLAS/SOURCE-MAP.md) |
+| Inspect deep history / provenance | [dump/](./dump/) |
+
+> **Skim first. Descend only when the task needs deeper context.**
 
 ---
 
@@ -44,6 +58,7 @@ The public document is the current forward-facing map: organized by function, co
 
 | Layer | Question | Location | Status |
 | --- | --- | --- | --- |
+| **00 · Interface** | *How should a human or AI enter and work with this system?* | [AGENTS.md](./AGENTS.md) + [OPERATE](./OPERATE/) | **Live / expanding** |
 | **01 · Map** | *What does the model currently say?* | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) | **Live** |
 | **02 · Evidence** | *Why should I believe this claim?* | Curated from the archive | **In progress** |
 | **03 · Archaeology** | *How did this model develop?* | [`dump/`](./dump/) | **Preserved** |
