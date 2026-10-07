@@ -17,7 +17,9 @@ This room provides the semantic **ATLAS** view while preserving the existing pub
 ### 🧭 CONTENTS // CURRENT
 
 - repository orientation
+- [source / provenance map](./SOURCE-MAP.md)
 - Map → Evidence → Archaeology reading path
+- human / AI entry routing
 
 ## 🧭 MAP // WHERE TO GO NEXT
 
