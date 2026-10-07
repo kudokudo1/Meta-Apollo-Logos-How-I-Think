@@ -18,9 +18,10 @@ OPERATE is the practical interface for working with the user and the systems aro
 
 - how to read and navigate the model
 - AI / agent entry through [../AGENTS.md](../AGENTS.md)
-- authority and permission boundaries
-- debugging and planning behavior
-- command / environment conventions
+- [working with me](./WORKING-WITH-ME.md)
+- [authority and permission boundaries](./AUTHORITY-AND-PERMISSIONS.md)
+- [debugging and planning](./DEBUGGING-AND-PLANNING.md)
+- [command / environment conventions](./COMMAND-ENVIRONMENT.md)
 - Post-Apollo working guidance
 - Git / Hospital control-surface guidance
 - Hospital-compatible browser-agent and report protocols
@@ -29,10 +30,10 @@ OPERATE is the practical interface for working with the user and the systems aro
 
 The following current-facing documents will be promoted here from existing sources without deleting their provenance:
 
-1. `WORKING-WITH-ME.md`
-2. `AUTHORITY-AND-PERMISSIONS.md`
-3. `DEBUGGING-AND-PLANNING.md`
-4. `COMMAND-ENVIRONMENT.md`
+1. ~~`WORKING-WITH-ME.md`~~ — promoted
+2. ~~`AUTHORITY-AND-PERMISSIONS.md`~~ — promoted
+3. ~~`DEBUGGING-AND-PLANNING.md`~~ — promoted
+4. ~~`COMMAND-ENVIRONMENT.md`~~ — promoted
 5. `POST-APOLLO-WORKING-GUIDE.md`
 6. `CONTROL-SURFACES.md`
 7. `HOSPITAL-AGENT-PROTOCOL.md`
