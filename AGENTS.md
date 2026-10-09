@@ -129,6 +129,7 @@ Start with:
 - [OPERATE/AUTHORITY-AND-PERMISSIONS.md](./OPERATE/AUTHORITY-AND-PERMISSIONS.md) — actuation boundaries
 - [OPERATE/DEBUGGING-AND-PLANNING.md](./OPERATE/DEBUGGING-AND-PLANNING.md) — problem-solving protocol
 - [OPERATE/COMMAND-ENVIRONMENT.md](./OPERATE/COMMAND-ENVIRONMENT.md) — host / shell conventions
+- [OPERATE/POST-APOLLO-WORKING-GUIDE.md](./OPERATE/POST-APOLLO-WORKING-GUIDE.md) — approved Post-Apollo development policy
 - [ATLAS/SOURCE-MAP.md](./ATLAS/SOURCE-MAP.md) — where these rules came from and which external sources remain canonical
 - [dump/](./dump/) — preserved archaeology when the compressed layer is not enough
 
