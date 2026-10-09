@@ -113,7 +113,7 @@ Descend when the task requires more direct control or explanation.
 
 # GIT // GITHUB
 
-**Implementation owner:** [Taskbars // Post-Apollo](https://github.com/kudokudo1/taskbars-post-apollo)
+**Implementation owner:** [Taskbars // Post-Apollo](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
 ## Boundary
 
@@ -183,7 +183,7 @@ Exact routes should be inspected from the current implementation before giving s
 
 # HOSPITAL
 
-**Implementation owner:** [Taskbars // Post-Apollo](https://github.com/kudokudo1/taskbars-post-apollo)
+**Implementation owner:** [Taskbars // Post-Apollo](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
 ## Boundary
 
@@ -267,61 +267,281 @@ Hospital
 
 Do not redesign this boundary while merely explaining how to use it.
 
-# PX // DEV EXPERIENCE
+# PX // DEV EXPERIENCE // SILVERBLUE // TOOLBOX
 
 **Implementation owner:** [The Post-Apollo Dev Experience](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp)
+
+These are coupled surfaces.
+
+Dev Experience is not merely another tool that happens to run on a Silverblue workstation. Part of its job is to compensate for the host / Toolbox split so the operator does not have to manually solve that boundary for every command.
+
+## Role
 
 Dev Experience identifies itself as the **developer control plane** of the Post-Apollo family.
 
 The live control CLI is `px`.
 
-Current Dev Experience documentation explicitly covers:
+The current relationship is:
 
-- CLI usage
-- workflow operations
-- run operations
-- watch
-- rerun
-- cancel
-- developer runbooks
+```text
+TASKBARS / HOSPITAL / GIT UI
+        ↓
+semantic PX operations
+        ↓
+DEV EXPERIENCE CONTROL PLANE
+        ↓
+host / Toolbox / GitHub / AI-provider / system primitive
+```
 
-Current PX implementation also participates in:
+For ordinary executable discovery, Dev Experience adds another relationship:
 
-- GitHub repository / workflow operations
-- guarded mutation preflight
-- operation journaling / recovery
-- Hospital room / session state
-- AI doctor / provider operations
-- exact repository / commit / workflow identity checks
+```text
+operator asks for tool
+        ↓
+PX discovers host + Toolbox
+        ↓
+PX resolves exact environment
+        ↓
+exact invocation
+```
 
-PX is frequently the control-plane implementation underneath higher-level Taskbars / Hospital UI.
+## Taskbars relationship
 
-Therefore:
+Current Taskbars implementation already delegates substantial control-plane behavior to PX.
 
-> **When a visible UI exists, teach the UI first. Use PX second as control-plane detail / fallback.**
+Verified examples include:
 
-Do not make the user operate PX manually by default merely because PX powers the visible interface.
+- GitHub workflows
+- workflow runs
+- run inspection
+- run logs
+- workflow dispatch
+- workflow factory operations
+- Hospital provider discovery
+- Hospital Doctor sessions
+- Hospital Doctor turns
+- Hospital reports / feedback
 
-# SILVERBLUE // TOOLBOX
+Taskbars also checks whether the installed `~/.local/bin/px` matches the current Dev Experience runtime source and exposes stale / missing / out-of-date PX states.
 
-**STATE //** reserved for implementation recon
+Taskbars therefore uses PX as a semantic backend.
 
-This control-surface guide must include the user's Fedora Silverblue host and Toolbox environment because host/container boundaries materially change:
+Current recon does **not** show Taskbars using the generic `px which` cross-environment resolver for arbitrary executable launch. That host / Toolbox compensation currently belongs primarily to Dev Experience / TERM EXP.
+
+## Tool discovery // `px tools`
+
+PX maintains a live executable registry across:
+
+- the host
+- the configured Toolbox
+
+Current default Toolbox:
+
+```text
+fedora-toolbox-44
+```
+
+The default is configurable with:
+
+```text
+PX_TOOLBOX
+```
+
+Toolbox discovery intentionally scans sanitized system directories rather than inheriting the host's shared-home wrapper paths.
+
+In particular, the registry tests explicitly prevent paths such as:
+
+```text
+~/.local/bin
+```
+
+from being inherited into the Toolbox scan.
+
+This prevents a host-visible wrapper in shared home from being misidentified as a real Toolbox-native installation.
+
+Operator / diagnostic route:
+
+```text
+px tools
+px tools <query>
+```
+
+## Cross-environment resolution // `px which`
+
+PX has an explicit resolver policy:
+
+```text
+host-first-v1
+```
+
+Its default behavior is:
+
+```text
+1. preserve normal host PATH behavior
+2. if the command is unavailable on the host, fall back to Toolbox
+3. return the exact invocation for the selected environment
+```
+
+A Toolbox resolution carries an invocation equivalent to:
+
+```text
+toolbox run -c <toolbox> -- <resolved-path>
+```
+
+PX can also deliberately force:
+
+- a backend
+- a specific environment
+
+when the environment itself matters.
+
+Operator / diagnostic route:
+
+```text
+px which <tool>
+```
+
+Use direct `toolbox run ...` instructions when diagnosing the boundary, explicitly forcing an environment, or when PX does not cover the requested operation.
+
+Do not make the user manually choose Toolbox first when the PX resolver can correctly choose the execution environment.
+
+## TERM EXP // environment-normalizing frontend
+
+Current Dev Experience includes the TERM EXP terminal control surface.
+
+Open with:
+
+```text
+px term
+```
+
+Alias:
+
+```text
+px tui
+```
+
+TERM EXP consumes the live:
+
+```text
+px actions --json
+px tools --json
+```
+
+registries.
+
+Its Find Anything surface spans:
+
+- semantic PX actions
+- preferred host commands
+- preferred Toolbox commands
+
+Current approved interactive specialists include:
+
+- Lazygit
+- Neovim
+- btop
+- Zellij
+- fzf
+
+Before launching one of these specialists, TERM EXP re-resolves it through the current PX resolver and uses the exact returned invocation.
+
+This means the operator can select **Neovim** or **Lazygit** as a capability without first remembering whether that executable currently lives on the host or in Toolbox.
+
+TERM EXP is therefore one of the primary ways Dev Experience compensates for the Silverblue / Toolbox split.
+
+## Silverblue / Toolbox operator model
+
+The workstation has two materially different execution environments:
+
+```text
+SILVERBLUE HOST
+immutable / host-integrated operating environment
+
+TOOLBOX
+mutable development container environment
+```
+
+The boundary affects:
 
 - package-management instructions
-- filesystem assumptions
-- available commands
+- executable availability
+- PATH
 - runtime dependencies
-- which machine state is being mutated
+- filesystem assumptions
+- whether a command changes host or container state
 
-Rules already established:
+An AI should first determine whether Dev Experience already abstracts the distinction.
 
-- identify host vs Toolbox/container when the distinction matters
-- do not assume a normal mutable-Fedora procedure applies unchanged to Silverblue
-- do not assume host aliases/packages/paths exist inside Toolbox
-- local-machine mutation still follows [AUTHORITY AND PERMISSIONS](./AUTHORITY-AND-PERMISSIONS.md)
+Preferred decision path:
 
-Exact operator routes and environment-specific procedures must be documented from current state rather than guessed.
+```text
+Does a Post-Apollo UI expose the capability?
+        ↓ yes
+use that UI
+
+        ↓ no
+
+Does PX / TERM EXP expose or resolve it?
+        ↓ yes
+use PX / TERM EXP
+
+        ↓ no
+
+Does the operation specifically belong to host or Toolbox?
+        ↓
+give the environment-specific primitive
+```
+
+## What Dev Experience currently abstracts
+
+Verified current compensation includes:
+
+- host + Toolbox executable discovery
+- deterministic host-first resolution
+- exact Toolbox invocation generation
+- searchable cross-environment tool selection in TERM EXP
+- specialist launch without making the operator choose the backend first
+- semantic PX actions above raw GitHub / Hospital / AI-provider primitives
+- guarded mutation preview / confirmation / verification
+- durable operation journaling and recovery evidence
+
+## What still leaks through
+
+The abstraction is intentionally not a claim that host and Toolbox are identical.
+
+The environment still matters for:
+
+- installing or removing software
+- host services
+- system configuration
+- immutable-host package changes
+- container-specific dependencies
+- debugging missing binaries
+- path / environment-specific behavior
+- operations that PX has not modeled
+
+Current Taskbars surfaces consume many semantic PX operations, but the generic cross-environment executable resolver is currently a Dev Experience / TERM EXP capability rather than a universal Taskbars launcher.
+
+Also, `px term` currently launches the TERM EXP Rust crate through Cargo from the Dev Experience runtime tree until the later installer/runtime lane supplies a compiled installed binary.
+
+## Guidance rule
+
+Do not teach Silverblue, Toolbox, and Dev Experience as three unrelated systems.
+
+Before telling the user to enter Toolbox or manually construct a container command:
+
+1. check whether the existing Post-Apollo UI already exposes the operation;
+2. check whether PX / TERM EXP already resolves or performs it;
+3. only expose the raw host / Toolbox boundary when it is actually relevant.
+
+When the raw environment boundary is relevant, name it explicitly.
+
+Do not assume a normal mutable-Fedora procedure applies unchanged to Silverblue.
+
+Do not assume host aliases, packages, or paths exist inside Toolbox.
+
+Local-machine mutation still follows [AUTHORITY AND PERMISSIONS](./AUTHORITY-AND-PERMISSIONS.md).
 
 # NEOVIM // EDITOR
 
