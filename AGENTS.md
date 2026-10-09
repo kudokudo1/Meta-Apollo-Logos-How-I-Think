@@ -131,6 +131,7 @@ Start with:
 - [OPERATE/COMMAND-ENVIRONMENT.md](./OPERATE/COMMAND-ENVIRONMENT.md) — host / shell conventions
 - [OPERATE/POST-APOLLO-WORKING-GUIDE.md](./OPERATE/POST-APOLLO-WORKING-GUIDE.md) — approved Post-Apollo development policy
 - [OPERATE/CONTROL-SURFACES.md](./OPERATE/CONTROL-SURFACES.md) — UI-first operator routes and control-plane map
+- [OPERATE/DESKTOP-LIFECYCLE.md](./OPERATE/DESKTOP-LIFECYCLE.md) — startup ownership, layered health, live-vs-source state, and restart boundaries
 - [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](./OPERATE/HOSPITAL-AGENT-PROTOCOL.md) — Hospital-compatible doctor / room / patient / assignment behavior
 - [OPERATE/HOSPITAL-REPORT-PROTOCOL.md](./OPERATE/HOSPITAL-REPORT-PROTOCOL.md) — report timing, schema, evidence, completion, and handoff behavior
 - [ATLAS/SOURCE-MAP.md](./ATLAS/SOURCE-MAP.md) — where these rules came from and which external sources remain canonical
