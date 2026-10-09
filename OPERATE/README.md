@@ -24,6 +24,7 @@ OPERATE is the practical interface for working with the user and the systems aro
 - [command / environment conventions](./COMMAND-ENVIRONMENT.md)
 - [Post-Apollo working guidance](./POST-APOLLO-WORKING-GUIDE.md)
 - [Git / Hospital / PX / Dev Exp control-surface guidance](./CONTROL-SURFACES.md)
+- [desktop lifecycle / startup / health boundaries](./DESKTOP-LIFECYCLE.md)
 - [Hospital-compatible browser-agent protocol](./HOSPITAL-AGENT-PROTOCOL.md) and [report protocol](./HOSPITAL-REPORT-PROTOCOL.md)
 
 ### ⌯✦ PROMOTION QUEUE // NEXT
