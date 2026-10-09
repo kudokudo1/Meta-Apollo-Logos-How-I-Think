@@ -56,7 +56,49 @@ These are `exec_always` entries.
 
 That means a Sway config reload applies them again.
 
-## 2 // SWAY RELOAD HAS A QUICKSHELL BLAST RADIUS
+## 2 // LOGIN AND LOCK BOUNDARY
+
+The current login/session entry is the default Silverblue login path.
+
+That login surface is not currently a custom Post-Apollo component.
+
+The current manual lock path is different.
+
+The Post-Apollo Power menu already exposes:
+
+```text
+Lock
+```
+
+and the current implementation executes:
+
+```text
+swaylock
+```
+
+So the present relationship is:
+
+```text
+default Silverblue login
+        ↓
+SwayPX session
+        ↓
+Post-Apollo desktop
+
+manual lock request
+        ↓
+Post-Apollo Power → Lock
+        ↓
+swaylock
+```
+
+This means the **lock trigger is already part of Post-Apollo**, while the lock-screen runtime itself is still Swaylock rather than a custom Post-Apollo lock surface.
+
+Do not describe the desktop as having no lock behavior.
+
+Do not describe Swaylock as a custom Post-Apollo lock screen unless that implementation actually exists.
+
+## 4 // SWAY RELOAD HAS A QUICKSHELL BLAST RADIUS
 
 Because the current session config uses `exec_always` and explicitly kills Quickshell before starting it:
 
@@ -85,7 +127,7 @@ Use it only when changing / reapplying Sway session policy actually matters.
 
 Local reload / restart remains a live-machine mutation and requires the appropriate approval.
 
-## 3 // QUICKSHELL DOES NOT HOT-RELOAD SOURCE CHANGES
+## 4 // QUICKSHELL DOES NOT HOT-RELOAD SOURCE CHANGES
 
 Current `shell.qml` explicitly sets:
 
@@ -112,7 +154,7 @@ edit source
 
 Do not claim a Taskbars visual or runtime fix is live merely because the repository changed.
 
-## 4 // QUICKSHELL ROOT OWNERSHIP
+## 5 // QUICKSHELL ROOT OWNERSHIP
 
 Current `shell.qml` is the long-lived Taskbars root.
 
@@ -150,7 +192,7 @@ some external helper processes
 
 A failure in one child service is not automatically a failure of the shell root.
 
-## 5 // ALWAYS-ON OR BOOT-ACTIVE SHELL WORK
+## 6 // ALWAYS-ON OR BOOT-ACTIVE SHELL WORK
 
 Some work begins when the shell graph is instantiated rather than waiting for the user to open a menu.
 
@@ -223,7 +265,7 @@ and, when a conversation is selected, refreshes its messages every:
 
 The Social Discord geometry helper process is also created as a long-lived helper, while active geometry watching is enabled / disabled according to the Social menu state.
 
-## 6 // MENU-GATED / DEMAND-GATED WORK
+## 7 // MENU-GATED / DEMAND-GATED WORK
 
 Other work intentionally becomes active only when its surface is being used.
 
@@ -267,7 +309,7 @@ Its shared monitor refresh can remain active outside the visible THERMAL / SYSTE
 
 Do not assume "menu closed" means every supporting timer or piece of state vanished.
 
-## 7 // ON-DEMAND EXTERNAL APPLIANCES
+## 8 // ON-DEMAND EXTERNAL APPLIANCES
 
 Several Post-Apollo surfaces are not core desktop daemons.
 
@@ -307,7 +349,7 @@ Social launches / reveals Vesktop when the Discord surface is selected.
 
 Discord failure is not equivalent to Social, Quickshell, or Sway failure.
 
-## 8 // HEALTH IS LAYERED
+## 9 // HEALTH IS LAYERED
 
 Do not reduce desktop health to one boolean.
 
@@ -376,7 +418,7 @@ Examples include:
 
 These should be debugged as their own composed systems before escalating the failure to the desktop as a whole.
 
-## 9 // OBSERVED STATE IS HEALTH EVIDENCE
+## 10 // OBSERVED STATE IS HEALTH EVIDENCE
 
 Visible Post-Apollo state is often intentional telemetry.
 
@@ -401,7 +443,7 @@ At the same time:
 
 Use it to choose the correct ownership layer.
 
-## 10 // FAILURE SCOPE BEFORE RESTART
+## 11 // FAILURE SCOPE BEFORE RESTART
 
 Before restarting anything, classify the failure.
 
@@ -434,7 +476,7 @@ when a smaller owner exists.
 
 A restart is an intervention, not a diagnosis.
 
-## 11 // RESTART BOUNDARIES
+## 12 // RESTART BOUNDARIES
 
 ### Restarting one helper / backend
 
@@ -475,7 +517,7 @@ Affects the compositor session itself.
 
 Treat it as a much larger intervention than a Quickshell restart.
 
-## 12 // AUTOTILING IS A SEPARATE SESSION HELPER
+## 13 // AUTOTILING IS A SEPARATE SESSION HELPER
 
 Current Sway Config launches:
 
@@ -497,7 +539,7 @@ inspect the autotiling helper relationship before blaming the compositor.
 
 The current Sway config does not itself document a duplicate-process guard for repeated `exec_always` launches, so do not invent its exact reload behavior without live inspection.
 
-## 13 // LIVE STATE VS SOURCE STATE
+## 14 // LIVE STATE VS SOURCE STATE
 
 For desktop work distinguish at least:
 
@@ -521,7 +563,7 @@ Examples:
 
 Verification should happen at the layer being claimed.
 
-## 14 // DEFAULT DIAGNOSTIC ORDER
+## 15 // DEFAULT DIAGNOSTIC ORDER
 
 For a desktop/runtime complaint:
 
@@ -538,7 +580,7 @@ For a desktop/runtime complaint:
 
 This is the desktop-lifecycle version of the general Ghost / relationship-debugging rule.
 
-## 15 // AUTHORITY
+## 16 // AUTHORITY
 
 Reading current Sway IPC state, logs, repository source, and exposed health fields is diagnostic inspection.
 
