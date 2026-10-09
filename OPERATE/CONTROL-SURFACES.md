@@ -1548,16 +1548,186 @@ AppControl
 
 When both expose the same underlying monitor family, prefer the surface that best matches the user's intent rather than treating the duplicate presentation as conflicting truth.
 
+
+# WEATHER STATION
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+Weather Station is a multi-domain environmental / celestial telemetry surface rather than a single temperature widget.
+
+The dock button uses:
+
+```text
+🌡
+```
+
+and toggles the station.
+
+The main title is:
+
+```text
+✦ WEATHER STATION ✦
+```
+
+## Domain model
+
+Current domains are:
+
+```text
+GROUND
+SKY
+SPACE
+```
+
+Current view selectors are:
+
+```text
+HOME
+MAP
+NEWS
+RADIO
+TERMINAL
+```
+
+The domain and view are separate dimensions.
+
+For non-HOME views, the station reports context in the form:
+
+```text
+<DOMAIN> // <VIEW>
+```
+
+## HOME // working telemetry
+
+HOME is the current consolidated live telemetry view.
+
+### SPACE
+
+Verified current space-weather telemetry includes:
+
+- `KP INDEX`
+- `SOLAR WIND`
+- `IMF BZ`
+- `F10.7 FLUX`
+
+The current Space service retrieves these from NOAA Space Weather Prediction Center endpoints.
+
+The service tracks readiness of the individual feeds rather than treating a partial response as complete space telemetry.
+
+### SKY
+
+Verified current weather / atmospheric telemetry includes:
+
+- temperature
+- feels-like temperature
+- condition
+- condition icon
+- air quality
+- humidity
+- wind
+
+Current weather data is fetched from `wttr.in`.
+
+Current air-quality data is fetched from the Open-Meteo air-quality API after coordinates are available.
+
+The weather service can allow `wttr.in` to resolve location when no explicit location is configured, then reuse returned coordinates for the air-quality request.
+
+### GROUND
+
+Verified current ground / environmental telemetry includes:
+
+- air quality
+- PM2.5
+- PM10
+- latitude / longitude position display
+
+GROUND and SKY deliberately overlap on some environmental data because they present different operator contexts.
+
+## TERMINAL // STAR MAP // working integration
+
+The current TERMINAL view is a real external terminal integration rather than a placeholder.
+
+It launches a dedicated Kitty window with:
+
+```text
+app_id // weather-screen
+title  // STAR MAP
+```
+
+using the Weather Station Kitty configuration and the current:
+
+```text
+weatherstation-starmap
+```
+
+program.
+
+The Weather Station then synchronizes that Kitty window into the terminal bay through Sway geometry.
+
+Current visible terminal states include:
+
+- `IDLE`
+- `STARTING`
+- `VISIBLE`
+- launch / start / sync error states
+
+Visible controls include:
+
+```text
+[ STAR MAP ]
+[ CLOSE ]
+```
+
+Treat Star Map launch / geometry failures as a relationship between Weather Station, Kitty, the Star Map program, and Sway—not automatically as a weather-data failure.
+
+## MAP // NEWS // RADIO // current placeholders
+
+The selectors:
+
+```text
+MAP
+NEWS
+RADIO
+```
+
+exist in the current UI.
+
+Their present view bodies explicitly report:
+
+```text
+map display offline...
+news receiver offline...
+radio receiver offline...
+```
+
+Therefore these are **reserved / visible but not currently implemented receiver views**.
+
+Do not describe them as working features because their buttons exist.
+
+## Focus behavior
+
+Weather Station takes exclusive keyboard focus while open.
+
+This is intentional current behavior.
+
+If keyboard interaction elsewhere appears blocked while the Station is open, first check whether Weather Station still owns focus before treating the other application as unresponsive.
+
+## Guidance rule
+
+For a request that is already represented in Weather Station:
+
+1. use the Weather Station route first;
+2. distinguish the active domain;
+3. distinguish HOME telemetry from MAP / NEWS / RADIO placeholders and the separate TERMINAL Star Map;
+4. use raw weather / NOAA / shell primitives only when the Station does not expose the needed operation or when diagnosis requires them.
+
+Do not replace the current station with a generic `wttr.in` terminal command merely because that service backs part of the station.
+
 # ADDITIONAL POST-APOLLO SURFACES
 
-The following are explicitly in scope for this guide and should be documented from their current implementations:
+Additional Post-Apollo operator surfaces should be added here as they become relevant.
 
-- Weather Station
-- other Post-Apollo operator surfaces as they become relevant
-
-Their existence is in scope now.
-
-Their detailed capabilities are **not** to be invented before recon.
+Document them from their current implementation rather than inferring capabilities from names, placeholders, or planned UI.
 
 # ROUTING RULE FOR FUTURE ENTRIES
 
