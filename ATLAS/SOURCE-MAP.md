@@ -193,7 +193,7 @@ Material to externalize includes:
 - LazyGit escape hatch
 - which operations should be explained through the menu first
 
-**Status:** CANDIDATE until the control-surface guide is written.
+**Status:** PROMOTED / EXPANDING in [OPERATE/CONTROL-SURFACES.md](../OPERATE/CONTROL-SURFACES.md). Git, GitHub, Hospital, PX, and Dev Experience have verified initial entries; additional operator surfaces remain queued for recon.
 
 ## 8 // CURRENT CONVERSATION-DERIVED RULES // 2026-10-07
 
@@ -208,7 +208,7 @@ These were made explicit during current work and should be promoted into durable
 - browser ChatGPT may behave as a Hospital-compatible external doctor through a shared protocol
 - Hospital reports should use a stable format and appear at meaningful boundaries rather than constantly
 
-**Status:** PARTLY PROMOTED. Local-machine authority and general Post-Apollo working behavior are current-facing. Control-surface and Hospital browser/report protocol details remain candidates pending user definition.
+**Status:** PARTLY PROMOTED. Local-machine authority, general Post-Apollo working behavior, and general control-surface policy are current-facing. Hospital browser/report protocol details remain candidates pending user definition.
 
 ## 9 // CENTRALIZATION RULE
 
