@@ -177,7 +177,7 @@ Material to promote includes:
 - provider relationships
 - meanings of landed / verified / certified
 
-**Status:** PARTLY PROMOTED. General Post-Apollo development behavior is current-facing in [OPERATE/POST-APOLLO-WORKING-GUIDE.md](../OPERATE/POST-APOLLO-WORKING-GUIDE.md), and the Hospital doctor / patient / room / assignment model is current-facing in [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](../OPERATE/HOSPITAL-AGENT-PROTOCOL.md). Report schema remains pending user definition.
+**Status:** PROMOTED for current-facing behavior. General Post-Apollo development guidance lives in [OPERATE/POST-APOLLO-WORKING-GUIDE.md](../OPERATE/POST-APOLLO-WORKING-GUIDE.md), the Hospital doctor / patient / room / assignment model lives in [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](../OPERATE/HOSPITAL-AGENT-PROTOCOL.md), and report / handoff behavior lives in [OPERATE/HOSPITAL-REPORT-PROTOCOL.md](../OPERATE/HOSPITAL-REPORT-PROTOCOL.md).
 
 ## 7 // GIT / GITHUB CONTROL SURFACES // PROMOTION QUEUE
 
@@ -208,7 +208,7 @@ These were made explicit during current work and should be promoted into durable
 - browser ChatGPT may behave as a Hospital-compatible external doctor through a shared protocol
 - Hospital reports should use a stable format and appear at meaningful boundaries rather than constantly
 
-**Status:** PARTLY PROMOTED. Local-machine authority, general Post-Apollo working behavior, control-surface policy, and the Hospital-compatible browser-agent protocol are current-facing. Hospital report protocol details remain pending user definition.
+**Status:** PROMOTED for the current operator layer. Local-machine authority, Post-Apollo working behavior, control-surface policy, Hospital-compatible browser-agent behavior, and Hospital report / handoff behavior are current-facing.
 
 ## 9 // CENTRALIZATION RULE
 
