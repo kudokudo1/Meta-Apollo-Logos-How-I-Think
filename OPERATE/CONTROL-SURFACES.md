@@ -603,6 +603,44 @@ It enters or creates the persistent Zellij session named:
 main
 ```
 
+## CRT state as diagnostic evidence
+
+Pretty Kitty's CRT behavior is not merely decorative.
+
+The current shader pipeline has persistent visual state and responds to Kitty activity / focus events. Visible states such as:
+
+- active
+- sleep
+- `NO SIGNAL`
+- wake / transition behavior
+
+are meaningful observations of the terminal's current CRT state machine.
+
+When the user reports a state such as:
+
+```text
+Pretty Kitty still says NO SIGNAL.
+Pretty Kitty is not waking up.
+Pretty Kitty is not responding to activity.
+```
+
+treat that report as literal runtime evidence.
+
+Do **not** begin by assuming the user does not know how to wake or focus the terminal.
+
+If activity / focus that normally triggers wake does not move the CRT out of its sleeping / no-signal state, something in the expected:
+
+```text
+Kitty event
+→ persistent CRT state
+→ wake transition
+→ rendered output
+```
+
+relationship is not behaving correctly.
+
+The visible state is strong diagnostic evidence, but it does not by itself identify the failing internal component. Use it to narrow investigation rather than replacing investigation.
+
 ## Guidance rule
 
 When the user asks to run something **in the terminal**, assume the existing Pretty Kitty / Zellij environment is relevant unless the task specifically requires a fresh external terminal, a different environment, or another control surface.
