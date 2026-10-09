@@ -24,7 +24,7 @@ OPERATE is the practical interface for working with the user and the systems aro
 - [command / environment conventions](./COMMAND-ENVIRONMENT.md)
 - [Post-Apollo working guidance](./POST-APOLLO-WORKING-GUIDE.md)
 - [Git / Hospital / PX / Dev Exp control-surface guidance](./CONTROL-SURFACES.md)
-- [Hospital-compatible browser-agent protocol](./HOSPITAL-AGENT-PROTOCOL.md) and report protocol
+- [Hospital-compatible browser-agent protocol](./HOSPITAL-AGENT-PROTOCOL.md) and [report protocol](./HOSPITAL-REPORT-PROTOCOL.md)
 
 ### ⌯✦ PROMOTION QUEUE // NEXT
 
@@ -37,7 +37,7 @@ The following current-facing documents will be promoted here from existing sourc
 5. ~~`POST-APOLLO-WORKING-GUIDE.md`~~ — promoted
 6. ~~`CONTROL-SURFACES.md`~~ — promoted / expanding
 7. ~~`HOSPITAL-AGENT-PROTOCOL.md`~~ — promoted
-8. `HOSPITAL-REPORT-PROTOCOL.md`
+8. ~~`HOSPITAL-REPORT-PROTOCOL.md`~~ — promoted
 
 The source inventory lives in [ATLAS // SOURCE MAP](../ATLAS/SOURCE-MAP.md).
 
