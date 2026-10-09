@@ -543,15 +543,367 @@ Do not assume host aliases, packages, or paths exist inside Toolbox.
 
 Local-machine mutation still follows [AUTHORITY AND PERMISSIONS](./AUTHORITY-AND-PERMISSIONS.md).
 
-# NEOVIM // EDITOR
+# TERMINAL // SHELL // SESSION // EDITOR
 
-**STATE //** reserved for implementation recon
+The user's command-line development environment is a connected stack rather than four unrelated programs.
 
-The user's Neovim environment is a first-class operator surface, not merely a generic text editor.
+Verified current relationship:
 
-When an operation is already exposed through the user's actual editor configuration, AI guidance should prefer that real editor workflow before generic editor instructions.
+```text
+PRETTY KITTY
+terminal / CRT presentation / terminal entry
+        ↓
+ZELLIJ
+persistent terminal workspace / session / panes / tabs
+        ↓
+OH MY APOLLO
+Zsh shell behavior / aliases / completion / command language
+        ↓
+ASTRO SNACKS
+Neovim / AstroNvim development editor
+```
 
-Exact plugins, key routes, commands, and editor-specific procedures must be inspected from the current configuration before being promoted here.
+Dev Experience / PX intersects this stack when semantic development operations, cross-environment tool resolution, or Toolbox compensation are needed.
+
+```text
+Pretty Kitty → Zellij → Oh My Apollo → Astro Snacks
+                         ↕
+                   PX / Dev Exp
+                         ↕
+                host / Toolbox
+```
+
+Do not explain commands, terminal behavior, or editor launch as though the user were operating a stock terminal + stock Bash + stock Vim environment.
+
+# PRETTY KITTY
+
+**Implementation owner:** [Post-Apollo Pretty Kitty](https://github.com/kudokudo1/Post-Apollo-Pretty-Kitty)
+
+Pretty Kitty is the Post-Apollo Kitty terminal surface.
+
+Verified current configuration includes:
+
+- Kitty as the terminal frontend
+- CRT / shader presentation infrastructure
+- background opacity `0.8`
+- `GohuFont 11 Nerd Font Mono`
+- Kitty shell entry through `~/.local/bin/kitty-zellij`
+
+The tracked `kitty-zellij` wrapper is:
+
+```text
+zellij attach --create main
+```
+
+Therefore opening the normal Pretty Kitty terminal does not merely spawn an isolated shell.
+
+It enters or creates the persistent Zellij session named:
+
+```text
+main
+```
+
+## Guidance rule
+
+When the user asks to run something **in the terminal**, assume the existing Pretty Kitty / Zellij environment is relevant unless the task specifically requires a fresh external terminal, a different environment, or another control surface.
+
+Do not casually tell the user to open another terminal when an operation can be performed in the terminal / pane they already occupy.
+
+# ZELLIJ // PERSISTENT TERMINAL WORKSPACE
+
+**Implementation owner:** [Post-Apollo Zellij](https://github.com/kudokudo1/Post-Apollo-Zellij)
+
+Zellij owns persistent terminal workspace structure:
+
+- sessions
+- panes
+- tabs
+- terminal workspace continuity
+- Post-Apollo layout / plugin behavior
+
+Current verified version documented by the project:
+
+```text
+0.45.0
+```
+
+Current config uses:
+
+```text
+default_shell "zsh"
+```
+
+so new Zellij panes enter the user's Zsh / Oh My Apollo shell environment rather than an unrelated shell.
+
+Useful verified control modes include:
+
+```text
+Ctrl-p → pane mode
+Ctrl-t → tab mode
+Ctrl-o → session mode
+```
+
+Verified direct controls also include:
+
+- `Alt-h` / `Alt-l` → move focus or tab left / right
+- `Alt-n` → new pane
+- `Alt-f` → toggle floating panes
+- pane mode → new panes, rename, pin, stack, float, move
+- tab mode → new / rename / close / navigate tabs
+- session mode → session manager and related session controls
+
+The Post-Apollo repository also carries a custom Zellij layout and WASM plugin.
+
+## Continuity role
+
+Pretty Kitty supplies the terminal window.
+
+Zellij supplies persistence and internal terminal structure.
+
+A terminal window disappearing does not necessarily mean the Zellij workspace disappeared.
+
+When troubleshooting terminal state, distinguish:
+
+```text
+Kitty window
+Zellij session
+Zellij pane / tab
+shell process inside the pane
+program running inside the shell
+```
+
+# OH MY APOLLO // ZSH
+
+**Implementation owner:** [Post-Apollo Oh My Apollo](https://github.com/kudokudo1/Post-Apollo-Oh-My-Apollo)
+
+Oh My Apollo is the user's interactive shell layer.
+
+Primary tracked live configuration corresponds to:
+
+```text
+~/.config/zsh
+```
+
+The current shell stack includes:
+
+- Zsh
+- Oh My Zsh
+- Powerlevel10k
+- Zinit
+- shared command history
+- completion menu behavior
+- zoxide
+- fzf integration
+- Post-Apollo command aliases
+
+Current environment declares:
+
+```text
+EDITOR=nvim
+VISUAL=nvim
+```
+
+and places:
+
+```text
+~/.local/bin
+```
+
+on `PATH`.
+
+Verified command-language conventions include:
+
+```text
+ls   → eza --icons
+ll   → eza -lh --icons --git
+la   → eza -lah --icons --git
+tv   → eza --tree --icons
+cat  → bat / batcat when available
+grep → rg --color=auto
+vim  → nvim
+```
+
+These are user environment semantics, not mistakes to repeatedly "correct" back to stock GNU command names.
+
+When exact underlying binaries matter, use the explicit primitive rather than assuming the alias.
+
+See also [COMMAND ENVIRONMENT](./COMMAND-ENVIRONMENT.md).
+
+# ASTRO SNACKS // NEOVIM
+
+**Implementation owner:** [Post-Apollo Astro Snacks](https://github.com/kudokudo1/Post-Apollo-Astro-Snacks)
+
+Astro Snacks is the user's actual Neovim configuration and should be treated as the canonical editor surface for operator guidance.
+
+It is based on:
+
+```text
+Neovim
+→ AstroNvim v6+
+→ Lazy.nvim
+→ Post-Apollo plugin configuration
+```
+
+Do not substitute generic Vim instructions when the current Astro Snacks surface already provides the operation.
+
+## Editor entry
+
+The shell environment already maps:
+
+```text
+vim → nvim
+EDITOR → nvim
+VISUAL → nvim
+```
+
+Dev Experience TERM EXP also recognizes **Neovim** as an approved interactive specialist and re-resolves it through `px which` before launch.
+
+This means editor launch can participate in Dev Experience's host / Toolbox compensation instead of requiring the operator to manually choose an environment first.
+
+## Core editor language
+
+Verified AstroNvim configuration uses:
+
+```text
+Leader      = Space
+LocalLeader = ,
+```
+
+Current LSP behavior includes:
+
+- AstroLSP
+- codelens enabled
+- semantic tokens enabled
+- inlay hints disabled by default
+- format-on-save enabled
+- QML language server `qmlls`
+
+Mason-managed tools currently include:
+
+- `lua-language-server`
+- `stylua`
+- `debugpy`
+- `tree-sitter-cli`
+
+## Verified operator controls
+
+### Diagnostics // Trouble
+
+```text
+<leader>xx → diagnostics
+<leader>xX → diagnostics for current buffer
+<leader>xq → quickfix list
+```
+
+Trouble intentionally does **not** own the symbols / outline job.
+
+### Outline // Aerial
+
+```text
+<leader>lo → toggle outline
+```
+
+Aerial owns the code outline relationship.
+
+### Minimap
+
+```text
+<leader>mm → toggle minimap
+```
+
+The minimap integrates:
+
+- search hits
+- diagnostics
+- Git signs
+
+### Focus // Twilight
+
+```text
+<leader>tw → toggle Twilight
+```
+
+### Navigation // Flash
+
+```text
+s → Flash jump
+S → Flash Treesitter jump
+```
+
+### Embedded terminal // termim.nvim
+
+Configured terminal commands include:
+
+```text
+:Fterm / :FTerm
+:Sterm / :STerm
+:Tterm / :TTerm
+:Vterm / :VTerm
+```
+
+Use the actual editor terminal capability when the desired operation belongs inside the editor.
+
+Do not automatically open a separate terminal window.
+
+## Additional verified editor behavior
+
+Current configuration also includes:
+
+- Snacks
+  - dashboard support
+  - indent support
+  - Zen support
+  - Snacks scrolling disabled
+- Mini
+  - icons
+  - indent scope
+  - cursor-word highlighting
+  - animated cursor / scrolling
+- Noice
+  - command-palette / message presentation
+- Vimade
+  - inactive-window fading
+- LSP signature support
+- completion / snippets / autopairs through the AstroNvim configuration
+- the `oasis-twilight` colorscheme selection
+
+## Ownership distinctions
+
+Use the correct layer when diagnosing behavior:
+
+```text
+Pretty Kitty
+→ terminal rendering / Kitty configuration / CRT shaders
+
+Zellij
+→ session / pane / tab structure
+
+Oh My Apollo
+→ shell startup / aliases / completion / command behavior
+
+Astro Snacks
+→ editing / LSP / diagnostics / editor navigation / editor UI
+
+PX / Dev Experience
+→ semantic development control + environment resolution
+```
+
+A visual problem in Kitty is not automatically a Zellij problem.
+
+A shell alias problem is not automatically a Neovim problem.
+
+A missing binary may be an environment-resolution problem rather than an editor configuration problem.
+
+## Guidance rule
+
+When the user asks how to perform editor or terminal development work:
+
+1. prefer the existing Astro Snacks operation when the editor owns the task;
+2. prefer the existing Zellij operation when pane / tab / session structure owns the task;
+3. respect Oh My Apollo command semantics when giving shell commands;
+4. treat Pretty Kitty as the normal terminal entry / presentation surface;
+5. use PX / TERM EXP before forcing the user to manually reason about host vs Toolbox when Dev Experience already abstracts that boundary;
+6. expose raw primitives only when the higher-level surfaces do not cover the operation or when diagnosis requires them.
 
 # ADDITIONAL POST-APOLLO SURFACES
 
@@ -606,6 +958,10 @@ Verified implementation facts in the current version were drawn from:
 - Hospital certification and evidence contracts
 - The Post-Apollo Dev Experience
 - PX implementation
+- Post-Apollo Pretty Kitty
+- Post-Apollo Zellij
+- Post-Apollo Oh My Apollo
+- Post-Apollo Astro Snacks
 
 Technical behavior remains canonical in the repository that owns it.
 
