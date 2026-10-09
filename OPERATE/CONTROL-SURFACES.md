@@ -647,6 +647,133 @@ When the user asks to run something **in the terminal**, assume the existing Pre
 
 Do not casually tell the user to open another terminal when an operation can be performed in the terminal / pane they already occupy.
 
+
+# CRT-TV // RECEIVER DECK
+
+**Implementation owner:** [Post-Apollo CRT-TV](https://github.com/kudokudo1/Post-Apollo-CRT-TV)
+
+CRT-TV is the receiver-style appliance layer around a Kitty / Zellij terminal workspace.
+
+It is distinct from Pretty Kitty:
+
+```text
+Pretty Kitty
+→ terminal presentation / CRT shader-state behavior
+
+CRT-TV
+→ spatial receiver / deck / side-panel composition around terminal workspace
+```
+
+## Current launcher
+
+The current launcher is:
+
+```text
+post-apollo-tv
+```
+
+from the project's `bin/post-apollo-tv` implementation.
+
+The launcher currently assembles:
+
+```text
+Kitty terminal
+        ↓
+Zellij
+
++ Quickshell receiver deck
++ Quickshell side panel
++ Sway geometry follower
+```
+
+The terminal window uses:
+
+```text
+app_id // post-apollo-terminal
+title  // Post-Apollo Terminal
+```
+
+The launcher deliberately removes inherited Zellij session variables before starting the TV terminal so it can create its own Zellij runtime rather than accidentally nesting inside the caller's current session.
+
+## Physical / spatial relationship
+
+The launcher first creates the terminal, deck, and side surfaces, then uses the shared TV geometry helper to convert / synchronize them as one spatial unit.
+
+Current assembly includes:
+
+- terminal / screen
+- deck underneath the terminal
+- side panel beside the terminal
+- shared Sway movement / geometry tracking
+
+Treat a geometry failure as a possible relationship failure between:
+
+```text
+Kitty
+Quickshell deck / side
+Sway
+TvGeometry.py
+```
+
+rather than assuming Zellij itself is broken.
+
+## Receiver display language
+
+The current receiver face visibly presents state concepts including:
+
+```text
+SESSION
+TAB
+MODE
+CONTROL
+SOURCE
+ZELLIJ
+DVD / TERMINAL
+DIGITAL VIDEO / DATA DECK
+```
+
+It also contains physical-looking controls labeled:
+
+```text
+POWER
+EJECT
+NEW
+CLOSE
+FULL
+FLOAT
+RENAME
+PIN
+FRAME
+SYNC
+OPTION
+```
+
+and a MODE dial / rocker controls.
+
+## Important current limitation // faceplate controls are not yet wired
+
+The current `ReceiverDeck.qml` contains the visual control components and labels, but the verified implementation does **not** currently contain click / tap handlers for those faceplate controls.
+
+The deck's `DeckButton`, rocker, mode dial, power, eject, and labeled button surfaces are currently presentation / chassis work rather than verified live Zellij mutations.
+
+Therefore:
+
+> **Do not instruct the user to press a receiver-deck control as though it already performs the labeled operation until current implementation recon shows that control is wired.**
+
+The CRT-TV shell / geometry assembly is real.
+
+The labeled receiver hardware is currently ahead of its control wiring.
+
+## Guidance rule
+
+Use CRT-TV when the task concerns the receiver-style terminal appliance, its spatial assembly, its future physical controls, or the relationship between the TV shell and Zellij.
+
+Use Pretty Kitty when the task concerns terminal rendering / CRT state / shaders.
+
+Use Zellij when the task concerns actual session / tab / pane behavior.
+
+Do not collapse all three into "Kitty."
+
 # ZELLIJ // PERSISTENT TERMINAL WORKSPACE
 
 **Implementation owner:** [Post-Apollo Zellij](https://github.com/kudokudo1/Post-Apollo-Zellij)
@@ -1768,6 +1895,7 @@ Verified implementation facts in the current version were drawn from:
 - The Post-Apollo Dev Experience
 - PX implementation
 - Post-Apollo Pretty Kitty
+- Post-Apollo CRT-TV
 - Post-Apollo Zellij
 - Post-Apollo Oh My Apollo
 - Post-Apollo Astro Snacks
