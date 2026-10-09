@@ -97,7 +97,7 @@ These provide migration, maintenance, continuity, provenance, and contribution r
 ## 4 // TASKBARS // POST-APOLLO // LIVE DESKTOP SOURCES
 
 Repository:
-[taskbars-post-apollo](https://github.com/kudokudo1/taskbars-post-apollo)
+[The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
 ### Runtime layout
 
@@ -193,9 +193,17 @@ Material to externalize includes:
 - LazyGit escape hatch
 - which operations should be explained through the menu first
 
-**Status:** PROMOTED / EXPANDING in [OPERATE/CONTROL-SURFACES.md](../OPERATE/CONTROL-SURFACES.md). Git, GitHub, Hospital, PX, and Dev Experience have verified initial entries; additional operator surfaces remain queued for recon.
+**Status:** PROMOTED / EXPANDING in [OPERATE/CONTROL-SURFACES.md](../OPERATE/CONTROL-SURFACES.md). The current map now covers Git/GitHub, Hospital, PX/Dev Experience, Silverblue/Toolbox, the terminal/editor stack, Sway/SwayPX, AppControl, Notifications, Social, CPU++, Weather Station, and related spatial/appliance boundaries.
 
-## 8 // CURRENT CONVERSATION-DERIVED RULES // 2026-10-07
+## 8 // DESKTOP LIFECYCLE // CURRENT RUNTIME RELATIONSHIPS
+
+Current startup / health / restart boundaries are summarized in [OPERATE/DESKTOP-LIFECYCLE.md](../OPERATE/DESKTOP-LIFECYCLE.md).
+
+It centralizes the verified relationship between SwayPX, Sway Config, Quickshell, shared shell services, menu-gated services, feature backends, and on-demand appliances while leaving implementation detail canonical in the owning repositories.
+
+**Status:** CANONICAL HERE for operator guidance; IMPLEMENTATION / CANONICAL ELSEWHERE for technical behavior.
+
+## 9 // CURRENT CONVERSATION-DERIVED RULES // 2026-10-07
 
 These were made explicit during current work and should be promoted into durable guidance:
 
@@ -210,7 +218,7 @@ These were made explicit during current work and should be promoted into durable
 
 **Status:** PROMOTED for the current operator layer. Local-machine authority, Post-Apollo working behavior, control-surface policy, Hospital-compatible browser-agent behavior, and Hospital report / handoff behavior are current-facing.
 
-## 9 // CENTRALIZATION RULE
+## 10 // CENTRALIZATION RULE
 
 The relationship between repositories should be:
 
