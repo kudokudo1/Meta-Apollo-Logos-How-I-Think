@@ -1303,12 +1303,255 @@ Treat the behavioral contracts above as the stable operator map.
 
 When diagnosing a visual complaint, inspect the current implementation rather than assuming this document freezes the exact current pixel geometry.
 
+
+# SOCIAL // SESSIONS // DISCORD
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+The Social surface is a shared messaging / communication window rather than a single application wrapper.
+
+The dock entry is the Sessions image button.
+
+Current visible application selector entries are:
+
+```text
+SESSIONS
+DISCORD
+TELEGRAM
+```
+
+These labels do **not** imply equal implementation maturity.
+
+## Shared window model
+
+The visible Social menu is a normal floating window so the existing Sway move / resize behavior can act on it.
+
+Social maintains one shared geometry relationship for its communication surfaces.
+
+For Discord, the current implementation keeps the real Vesktop window and the Social shell geometrically synchronized rather than pretending Discord is a native QML chat client.
+
+When troubleshooting this surface, distinguish:
+
+```text
+Social shell
+Sessions data / composer
+Discord / Vesktop application
+shared Sway geometry helper
+```
+
+## SESSIONS
+
+SESSIONS is backed by the current Session bridge / adapter.
+
+Verified adapter capabilities include:
+
+- backend health
+- conversation list
+- message history
+- conversation selection
+- message send request
+- background conversation refresh
+- background message refresh
+
+The contact surface exposes:
+
+```text
+CONTACTS
+CONVERSATION(S)
+```
+
+and the messaging window has distinct app-selector, contact, and composer focus zones.
+
+### Runtime-health rule
+
+The existence of a send path in the UI / adapter is not proof that the external Session backend is healthy at this exact moment.
+
+The adapter exposes backend / send / message errors explicitly.
+
+Therefore:
+
+> **Treat Sessions availability as runtime state.**
+
+If the user reports that reading works but sending fails, do not erase that observation because a `sendMessage()` implementation exists.
+
+Inspect the current bridge health / send error and treat the observed failure as evidence.
+
+## DISCORD
+
+DISCORD is currently integrated through Vesktop.
+
+The Social surface can:
+
+- launch Vesktop when needed
+- move it through the Sway scratchpad lifecycle
+- show / hide it with the Social selector
+- synchronize its geometry with the Social shell
+- keep a backing surface underneath it
+- preserve the shared move / resize relationship
+
+Current implementation identifies the Discord application by:
+
+```text
+app_id // vesktop
+Flatpak // dev.vencord.Vesktop
+```
+
+The geometry follower uses persistent direct Sway IPC rather than repeatedly launching a shell polling pipeline.
+
+This means a Discord-placement problem may belong to the shared geometry relationship rather than Discord itself.
+
+## TELEGRAM
+
+`TELEGRAM` is present as a visible selector entry.
+
+Current activation code does **not** show a distinct Telegram backend / application lifecycle comparable to the real Sessions or Discord paths.
+
+Treat Telegram as **present in the UI but not verified as a complete current integration**.
+
+Do not tell the user that Telegram is working merely because its selector button exists.
+
+# CPU++
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+CPU++ is the dedicated machine-monitoring surface.
+
+The dock button uses the visible:
+
+```text
+🖥
+```
+
+icon.
+
+Current top-level CPU++ modes are:
+
+```text
+FAVORITES
+PROCESS
+THERMAL
+SYSTEM
+```
+
+The modes are not equally complete.
+
+## THERMAL // working monitor surface
+
+THERMAL is a current live monitor / control surface.
+
+Its target submodes are:
+
+```text
+TEMP
+FAN
+```
+
+It reuses the shared Post-Apollo thermal controller / view relationship rather than maintaining a second unrelated interpretation of temperature and fan state.
+
+Verified UI concepts include:
+
+- thermal sensor identity
+- temperature state
+- fan identity / RPM
+- `THERMAL LOAD`
+- `FAN SPEED`
+- `FAN CONTROL`
+
+Hardware-dependent fan mutation remains subject to the current controller / safety-lock availability.
+
+Do not promise fan control for a sensor that does not expose it.
+
+## SYSTEM // working monitor surface
+
+SYSTEM is a current live machine-component monitor.
+
+Current target categories include:
+
+```text
+ALL
+CPU
+MEM
+GPU
+DISK
+NET
+SWAP
+```
+
+The shared System Monitor presentation includes:
+
+- utilization
+- component metric / state
+- system-control area where supported
+- process / app contributors
+
+CPU++ deliberately reuses the same System Monitor family used by AppControl instead of creating an independent competing telemetry model.
+
+## FAVORITES // current shell, incomplete bay
+
+The `FAVORITES` mode exists.
+
+The current central content for this mode is still explicitly labeled:
+
+```text
+FAVORITES BAY
+```
+
+and does not yet contain the same completed monitor body as THERMAL / SYSTEM.
+
+Treat this as a present surface with unfinished content.
+
+## PROCESS // current shell, incomplete bay
+
+The `PROCESS` mode exists.
+
+The current central content is explicitly:
+
+```text
+PROCESS BAY
+```
+
+rather than a completed dedicated process monitor.
+
+AppControl's KILL / Task Manager remains the verified detailed process-control surface today.
+
+Do not redirect the user to CPU++ PROCESS for functionality that only exists in AppControl.
+
+## CPU++ ACTUATORS // reserved, intentionally empty
+
+The current UI contains a bay labeled:
+
+```text
+CPU++ ACTUATORS
+```
+
+The source explicitly states that the actuator bay is intentionally structurally empty and reserved for future controls that mutate machine state.
+
+Therefore:
+
+> **A visible actuator bay is not evidence that CPU++ currently exposes machine-state mutation there.**
+
+Do not invent actuator controls.
+
+## CPU++ ↔ AppControl relationship
+
+Current CPU++ THERMAL / SYSTEM surfaces consume shared telemetry / control concepts also present in AppControl.
+
+Useful current split:
+
+```text
+CPU++
+→ dedicated machine-monitoring presentation
+
+AppControl
+→ broader desktop / application / process control surface
+```
+
+When both expose the same underlying monitor family, prefer the surface that best matches the user's intent rather than treating the duplicate presentation as conflicting truth.
+
 # ADDITIONAL POST-APOLLO SURFACES
 
 The following are explicitly in scope for this guide and should be documented from their current implementations:
 
-- Social
-- CPU++
 - Weather Station
 - other Post-Apollo operator surfaces as they become relevant
 
