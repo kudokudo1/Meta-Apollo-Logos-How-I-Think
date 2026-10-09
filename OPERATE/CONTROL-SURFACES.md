@@ -943,13 +943,371 @@ When the user asks how to perform editor or terminal development work:
 5. use PX / TERM EXP before forcing the user to manually reason about host vs Toolbox when Dev Experience already abstracts that boundary;
 6. expose raw primitives only when the higher-level surfaces do not cover the operation or when diagnosis requires them.
 
+# APPCONTROL
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+AppControl is the general desktop / application / command / process control surface.
+
+The dock launcher is the visible:
+
+```text
+-⋆♱⋆-
+```
+
+button.
+
+Current verified top-level AppControl modes are:
+
+```text
+FAVORITES
+APPS
+FILES
+RUN
+WINDOWS
+REMOTE
+THERMAL
+KILL
+SYSTEM
+```
+
+These are real mode labels from the current implementation.
+
+## FAVORITES
+
+FAVORITES is a cross-surface collection rather than a separate subsystem.
+
+Current implementation can preserve / reconstruct favorites for multiple AppControl families, including application entries, run commands, windows / tabs, tasks, and monitor metrics.
+
+Use FAVORITES when the operator has already promoted a frequently used object or metric into their preferred control set.
+
+## APPS
+
+APPS owns application discovery and launching.
+
+Verified current distinctions include:
+
+- normal / native application entries
+- Flatpak entries
+- hidden commands that do not normally expose a launchable desktop entry
+- normal launch
+- Toolbox launch
+- Bottles launch
+
+Hidden command entries are automatically given a terminal when needed so interactive tools remain usable.
+
+The Flatpak-specific source view intentionally prevents native entries from exposing mixed launch / control actions while they are shown only for comparison.
+
+## FILES
+
+FILES owns filesystem browsing / searching through the shared AppControl surface.
+
+Verified behavior includes:
+
+- browse
+- search
+- parent / up navigation
+- open file or directory
+- reveal entry
+- open terminal here
+- favorite-aware ordering
+
+Filesystem provider behavior is delegated to the file service; AppControl retains the shared selection, search, detail, focus, and favorite interaction.
+
+## RUN
+
+RUN is AppControl's command surface.
+
+Verified current list modes include:
+
+- user-entered command / favorites / session history
+- terminal history
+- all executable command names available from the current PATH
+
+Verified launch prefixes are:
+
+```text
+NORMAL
+KITTY
+TOOLBOX
+```
+
+`NORMAL` executes through the configured shell.
+
+`KITTY` launches through a dedicated Kitty instance.
+
+`TOOLBOX` launches Kitty, executes the command inside the default Toolbox, and leaves an interactive shell open inside that Toolbox afterward.
+
+AppControl also has dedicated FLOAT and FULLSCREEN Kitty launch behavior through Sway.
+
+The RUN surface has a deliberately conservative process-termination action. It only offers that destructive path when a simple command can be mapped to an exact currently running process; ambiguous pipelines / wrappers / services are not treated as safe kill targets.
+
+### Relationship to PX / Dev Experience
+
+AppControl's explicit `TOOLBOX` RUN prefix is a **chosen environment route**.
+
+PX's `px which` is a **resolver** that decides host vs Toolbox according to the Dev Experience policy.
+
+Do not collapse these into the same behavior:
+
+```text
+AppControl RUN → TOOLBOX
+operator explicitly chooses Toolbox
+
+px which <tool>
+PX resolves the appropriate environment
+```
+
+## WINDOWS // TABS
+
+WINDOWS owns live desktop-window and tab-level control.
+
+The current implementation has distinct window and tab views.
+
+Tab discovery currently has provider paths for environments including:
+
+- Kitty remote-control tabs
+- Chromium / Electron DevTools targets when a debug endpoint exists
+- accessibility / AT-SPI-discovered application controls
+
+The same AppControl family also contains application / window / tab audio state and policy machinery.
+
+When giving tab instructions, identify the actual provider / application when that distinction changes what AppControl can do.
+
+## REMOTE
+
+REMOTE owns SSH-oriented remote targets.
+
+Verified behavior includes:
+
+- configured SSH targets
+- known-host targets
+- search
+- SSH activation
+- SFTP activation
+- connection testing
+- editing SSH configuration
+- copying useful target text through the shared clipboard helper
+
+REMOTE provider behavior is delegated to its controller; AppControl supplies the shared operator UI.
+
+## THERMAL
+
+THERMAL owns the temperature / fan monitoring and control surface.
+
+Verified current UI includes:
+
+- thermal sensor detail
+- fan sensor detail
+- `THERMAL LOAD`
+- `FAN SPEED`
+- `FAN CONTROL`
+
+Do not assume all hardware exposes every control. Use the current sensor / controller state.
+
+## KILL // TASK MANAGER // HUNTER
+
+KILL owns process / task inspection and guarded process actions.
+
+Verified task detail includes:
+
+- CPU
+- memory percentage
+- RSS
+- threads
+- PID
+- uptime
+- CPU / memory history
+
+Verified guarded actions include:
+
+- restart process
+- memory limit
+- freeze / resume behavior
+- terminate
+
+Protected or dangerous targets use explicit unlock / confirmation machinery rather than silently executing destructive actions.
+
+### HUNTER
+
+HUNTER is a process-analysis / bulk-action view inside the KILL family.
+
+Verified Hunter metrics include:
+
+- combined score
+- CPU
+- memory
+- I/O
+- age
+
+Verified visibility classes include:
+
+- `TARGETS`
+- `PROTECTED`
+- `ALL`
+
+Current code also has explicit candidate / confirmation flows for the operator-facing `KILL HOGS` and `KILL MICE` operations.
+
+Treat those labels literally as AppControl operations rather than rewriting them into generic process-manager language.
+
+## SYSTEM
+
+SYSTEM owns system-component monitoring / control presentation.
+
+Verified current UI includes:
+
+- `UTILIZATION`
+- component-specific metric presentation
+- `SYSTEM CONTROL`
+- `PROCESS / APP CONTRIBUTORS`
+
+System categories include component-specific handling such as network and storage presentation.
+
+Inspect the selected component's live control availability before promising an action.
+
+## Destructive-action rule
+
+AppControl has a dedicated destructive-confirmation surface.
+
+Dangerous process / system operations must be described as guarded operator actions when the current UI requires confirmation or unlocking.
+
+Do not instruct the user to bypass the existing safety surface with a raw command merely because the underlying primitive is known, unless the user explicitly requests the primitive or the UI path is unavailable / broken.
+
+# NOTIFICATIONS
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+Notifications has two related operator surfaces:
+
+```text
+POPUP
+active / transient notification presentation
+
+NOTIFICATION HUB
+persistent history / search / policy / app navigation
+```
+
+The dock button uses the visible icon:
+
+```text
+-⋆🗒⋆-
+```
+
+and toggles the Notification Hub.
+
+## Popup behavior
+
+The popup surface displays currently active notifications.
+
+The backend accepts both ordinary and rich notifications, including structured fields such as:
+
+- source / source ID
+- title / message
+- category
+- severity
+- tags
+- metrics
+- context
+- actions
+- live-state metadata
+
+Source-wide snooze / DND policy can suppress new active popups without deleting the durable history.
+
+## NOTIFICATION HUB
+
+The current hub title is:
+
+```text
+NOTIFICATION HUB
+```
+
+Verified history controls include:
+
+- `SEARCH HISTORY...`
+- `ALL`
+- `APPS`
+- `SYSTEM`
+- `SOCIAL`
+- `APOLLO`
+- `WARNING`
+- `MANAGER`
+
+Notification history is persisted by the service and is currently bounded to 300 retained entries.
+
+Do not treat the popup list and durable history as the same thing.
+
+## Card controls
+
+Current notification cards expose:
+
+- favorite `✦ / ✧`
+- `ZZ` snooze
+- `DND`
+- `CLEAR ALL` for that source
+- `×` dismiss for one notification
+- `⇲` bring the source application to the current workspace / open it when needed
+
+Card navigation also supports taking the operator to the source application.
+
+The navigation path is deliberately non-destructive: it focuses / moves / launches the matching application and does not hide a kill / privileged operation inside notification navigation.
+
+## Snooze
+
+`ZZ` is source-wide popup suppression for a configured duration.
+
+The current Manager presets are:
+
+```text
+1H
+6H
+12H
+1D
+3D
+7D
+```
+
+Snooze is timed.
+
+## DND
+
+DND is persistent source-wide suppression until explicitly cleared.
+
+The `MANAGER` view exposes:
+
+```text
+DO NOT DISTURB
+ALLOW
+```
+
+for managing suppressed sources.
+
+The backend persists notification policy separately from notification history.
+
+## Notification actions
+
+The service has an action router for structured notification actions.
+
+Current routed action IDs include resource-oriented operations such as:
+
+- open resource
+- limit resource
+- kill resource
+
+Do not assume an arbitrary notification has those actions. Inspect the notification's actual structured action list.
+
+## Visual-state note
+
+Notification popup / Hub spacing, glow, opacity, and placement are active presentation details and may continue to be tuned.
+
+Treat the behavioral contracts above as the stable operator map.
+
+When diagnosing a visual complaint, inspect the current implementation rather than assuming this document freezes the exact current pixel geometry.
+
 # ADDITIONAL POST-APOLLO SURFACES
 
 The following are explicitly in scope for this guide and should be documented from their current implementations:
 
-- AppControl
 - Social
-- Notifications
 - CPU++
 - Weather Station
 - other Post-Apollo operator surfaces as they become relevant
