@@ -10,7 +10,7 @@
 
 A living map of the relationship between an artist and the models he uses to understand, transform, and act on the world — and a practical interface for humans and AI systems that need to understand how to communicate, collaborate, plan, debug, preserve continuity, and work across the Meta Apollo // Post-Apollo family.
 
-**FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [TASKBARS](https://github.com/kudokudo1/taskbars-post-apollo)
+**FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [POST-APOLLO PROJECT](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
 ### 🧭 MAP // REPOSITORY
 
