@@ -177,7 +177,7 @@ Material to promote includes:
 - provider relationships
 - meanings of landed / verified / certified
 
-**Status:** CANDIDATE for centralized operator guidance until the Hospital protocol is written.
+**Status:** CANDIDATE for Hospital-specific operator guidance until the Hospital protocol is written. General Post-Apollo development behavior is now promoted in [OPERATE/POST-APOLLO-WORKING-GUIDE.md](../OPERATE/POST-APOLLO-WORKING-GUIDE.md).
 
 ## 7 // GIT / GITHUB CONTROL SURFACES // PROMOTION QUEUE
 
@@ -208,7 +208,7 @@ These were made explicit during current work and should be promoted into durable
 - browser ChatGPT may behave as a Hospital-compatible external doctor through a shared protocol
 - Hospital reports should use a stable format and appear at meaningful boundaries rather than constantly
 
-**Status:** CANDIDATE / being promoted.
+**Status:** PARTLY PROMOTED. Local-machine authority and general Post-Apollo working behavior are current-facing. Control-surface and Hospital browser/report protocol details remain candidates pending user definition.
 
 ## 9 // CENTRALIZATION RULE
 
