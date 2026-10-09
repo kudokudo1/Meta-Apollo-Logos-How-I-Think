@@ -98,7 +98,7 @@ Do not describe the desktop as having no lock behavior.
 
 Do not describe Swaylock as a custom Post-Apollo lock screen unless that implementation actually exists.
 
-## 4 // SWAY RELOAD HAS A QUICKSHELL BLAST RADIUS
+## 3 // SWAY RELOAD HAS A QUICKSHELL BLAST RADIUS
 
 Because the current session config uses `exec_always` and explicitly kills Quickshell before starting it:
 
