@@ -1070,6 +1070,386 @@ When the user asks how to perform editor or terminal development work:
 5. use PX / TERM EXP before forcing the user to manually reason about host vs Toolbox when Dev Experience already abstracts that boundary;
 6. expose raw primitives only when the higher-level surfaces do not cover the operation or when diagnosis requires them.
 
+
+# SWAY // SWAYPX // SPATIAL CONTROL
+
+The Post-Apollo spatial layer is split across two repositories with different ownership.
+
+```text
+SwayPX
+→ compositor capabilities / renderer / animation / effects / IPC behavior
+
+Post-Apollo Sway Config
+→ operator/session policy / keybindings / outputs / rules / startup
+
+Taskbars / CRT-TV / Social / Weather / AppControl
+→ higher-level consumers of spatial behavior
+
+swaymsg
+→ raw compositor primitive
+```
+
+Do not collapse the compositor source, the live session config, and the applications consuming Sway IPC into one thing.
+
+## SWAYPX // compositor implementation
+
+**Implementation owner:** [Post-Apollo SwayPx](https://github.com/kudokudo1/Post-Apollo-SwayPx)
+
+SwayPX is the Post-Apollo compositor fork.
+
+It preserves SwayFX / Sway lineage and upstream-oriented source structure while adding Post-Apollo spatial behavior.
+
+The current Sway Config repository declares the custom compositor runtime at:
+
+```text
+~/.local/opt/swayfx/bin/sway
+```
+
+Treat that path as the configured project relationship, not as proof that an arbitrary current process still uses that exact binary without runtime inspection.
+
+### Verified compositor capabilities
+
+Inherited / current SwayFX-style capabilities include:
+
+- blur
+- rounded corners / borders / titlebars
+- shadows
+- inactive-window dimming
+- layer-shell effects
+- scratchpad-minimize behavior
+- ordinary Sway window / workspace / output IPC
+
+Post-Apollo SwayPX also has explicit animation configuration.
+
+Current animation events understood by the compositor include:
+
+```text
+OPEN
+CLOSE
+MOVE
+RESIZE
+WORKSPACE
+```
+
+Current animation styles include:
+
+```text
+DEFAULT
+CRT
+INHERIT
+```
+
+The compositor implementation has special CRT semantics for window opening and closing.
+
+CRT open begins from a horizontal-line-like collapsed height and expands to the final geometry.
+
+CRT close collapses the window toward a thin horizontal line before completion.
+
+This is compositor behavior, not a Kitty shader effect.
+
+Do not confuse:
+
+```text
+Pretty Kitty CRT
+→ terminal shader / signal-state behavior
+
+SwayPX CRT
+→ compositor window open / close animation
+```
+
+## POST-APOLLO SWAY CONFIG // session policy
+
+**Implementation owner:** [Post-Apollo Sway Config](https://github.com/kudokudo1/Post-Apollo-Sway-Config)
+
+This repository owns the live Sway session policy:
+
+- displays
+- workspaces
+- gaps
+- window rules
+- keybindings
+- startup
+- Quickshell launch
+- terminal / file-manager routes
+- audio / brightness / screenshot keys
+- application-specific spatial rules
+
+The runtime `config` remains in Sway's normal configuration shape rather than being moved into Meta Apollo documentation rooms.
+
+### Current configured entry routes
+
+Verified current key routes include:
+
+```text
+Mod+Return
+→ terminal
+
+Mod+d
+→ AppControl
+
+Mod+g
+→ Git control menu
+
+Mod+h
+→ Hospital control menu
+
+Mod+Shift+f
+→ file explorer
+
+Mod+Shift+e
+→ Post-Apollo power menu
+```
+
+The current terminal command in the config resolves to the later assignment:
+
+```text
+kitty zellij
+```
+
+The current file-explorer command is:
+
+```text
+kitty yazi
+```
+
+These session routes sit underneath the richer Pretty Kitty / Zellij / AppControl relationships documented elsewhere in this guide.
+
+### Focus / movement
+
+Verified current spatial shortcuts include:
+
+```text
+Mod+Arrow
+→ move focus
+
+Mod+Shift+Arrow
+→ move focused window
+
+Mod+1..0
+→ switch workspace
+
+Mod+Shift+1..0
+→ move focused container to workspace
+
+Mod+f
+→ fullscreen
+
+Mod+Shift+Space
+→ toggle floating
+
+Mod+Space
+→ switch focus between tiling / floating areas
+
+Mod+Shift+-
+→ move focused window to scratchpad
+
+Mod+-
+→ show / cycle scratchpad
+
+Mod+r
+→ resize mode
+```
+
+The traditional `Mod+h` focus-left route is intentionally displaced because `Mod+h` is reserved for Hospital; current config uses `Mod+Left` for focus left.
+
+### Pointer move / resize
+
+The current floating modifier is:
+
+```text
+Mod + left mouse
+→ move
+
+Mod + right mouse
+→ resize
+```
+
+This relationship is also used by higher-level Social / Discord geometry behavior.
+
+### Current visual session policy
+
+The current Sway config sets:
+
+```text
+animation_duration_ms 250
+animation open CRT
+animation close CRT
+```
+
+and also configures:
+
+- inner / outer gaps
+- focused / inactive / urgent border colors
+- window shadows
+- active / inactive shadow colors
+
+These are compositor/session presentation rules rather than Taskbars widget styling.
+
+## Output names // live state wins
+
+The Sway Config repository intentionally preserves machine-specific output names and geometry as a known-working baseline.
+
+Current repository text includes output names such as:
+
+```text
+DP-3
+HDMI-A-1
+```
+
+Do **not** treat a repository snapshot as authoritative proof of the currently connected output names.
+
+Before current-state monitor instructions, use live Sway state such as:
+
+```text
+swaymsg -t get_outputs
+```
+
+when available.
+
+If the user's observed live output identity conflicts with an older config snapshot, investigate the drift rather than assuming the user is wrong.
+
+The same rule applies to resolution, position, refresh rate, focus, and workspace-output attachment.
+
+## Higher-level spatial control // AppControl WINDOWS
+
+For ordinary window operations, AppControl already exposes a higher-level Sway control surface.
+
+Verified current WINDOW actions include:
+
+```text
+FOCUS
+MOVE HERE
+TOGGLE FLOATING
+TOGGLE CENTER
+TOGGLE FULLSCREEN
+```
+
+These operate against Sway container identity.
+
+Therefore, when the user asks how to focus, bring over, float, center, or fullscreen a discovered window:
+
+> **Use AppControl → WINDOWS first when that UI route fits the task.**
+
+Use `swaymsg` second as the raw primitive / diagnostic / fallback.
+
+AppControl also subscribes to Sway window / workspace events and refreshes from the authoritative Sway tree rather than attempting to maintain an entirely separate spatial truth.
+
+## Higher-level consumers
+
+Sway / SwayPX is infrastructure underneath several Post-Apollo surfaces.
+
+### Notifications
+
+Notification Hub app navigation uses Sway to:
+
+- focus an exact matching window
+- move an exact matching window to the current workspace
+- focus it after movement
+- fall back to launching the application when no matching window exists
+
+### Social // Discord
+
+Social uses Sway for:
+
+- shared floating-window geometry
+- workspace-relative placement
+- move / resize tracking
+- Vesktop scratchpad lifecycle
+- synchronized Discord / Social positioning
+
+Its persistent geometry helper uses direct Sway IPC.
+
+### Weather Station
+
+Weather Station's Star Map uses Sway to:
+
+- detect the dedicated `weather-screen` Kitty window
+- float it
+- remove its border
+- resize it into the instrument bay
+- move it to exact geometry
+- show it from scratchpad
+- kill it when closed
+
+### CRT-TV
+
+CRT-TV uses Sway to assemble:
+
+- Kitty terminal
+- receiver deck
+- side panel
+
+into one coordinated spatial appliance.
+
+It first lets Sway establish the tiled relationship, then its geometry helper converts / follows the assembled surfaces as the TV unit.
+
+### AppControl RUN
+
+AppControl's FLOAT / FULLSCREEN Kitty routes create unique application IDs and use temporary Sway criteria so only the intended Kitty window receives the spatial rule.
+
+## SwayPX vs application geometry
+
+When a Post-Apollo surface visibly moves / resizes / focuses another window, do not assume that logic belongs inside SwayPX.
+
+Use this ownership test:
+
+```text
+Does the behavior define compositor capability for all windows?
+→ SwayPX
+
+Does it define the user's desktop/session rule?
+→ Post-Apollo Sway Config
+
+Does it coordinate one Post-Apollo appliance/widget/application?
+→ that application's own geometry/controller layer
+
+Does it perform one raw spatial operation?
+→ swaymsg / Sway IPC
+```
+
+This prevents appliance-specific layout logic from being pushed into the compositor merely because Sway ultimately executes the movement.
+
+## Dev Experience relationship
+
+Current recon does not show a general PX abstraction for Sway window / workspace / geometry operations comparable to PX's host / Toolbox executable resolver.
+
+For spatial operations, current higher-level abstraction primarily lives in:
+
+- Taskbars control surfaces
+- application-specific geometry helpers
+- Sway Config keybindings / rules
+
+with Sway IPC / `swaymsg` underneath.
+
+Do not invent a `px sway` route that does not currently exist.
+
+## Configuration reload / mutation
+
+Current Sway config provides:
+
+```text
+Mod+Shift+r
+→ reload Sway configuration
+```
+
+Editing the live Sway config, changing output policy, changing keybindings, rebuilding / replacing SwayPX, or restarting the compositor is a local-machine mutation.
+
+Those actions remain subject to [AUTHORITY AND PERMISSIONS](./AUTHORITY-AND-PERMISSIONS.md).
+
+Reading Sway IPC state for diagnosis does not by itself authorize changing that state.
+
+## Guidance rule
+
+For spatial questions:
+
+1. identify whether the request belongs to a higher-level Post-Apollo surface;
+2. use that actual UI / control first when it exists;
+3. use current Sway state for factual window / workspace / output claims;
+4. use Sway Config for persistent operator/session policy;
+5. use SwayPX for compositor capability / animation / renderer changes;
+6. use `swaymsg` as the direct primitive when needed;
+7. do not infer live output geometry from stale config alone.
+
 # APPCONTROL
 
 **Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
@@ -1894,6 +2274,8 @@ Verified implementation facts in the current version were drawn from:
 - Hospital certification and evidence contracts
 - The Post-Apollo Dev Experience
 - PX implementation
+- Post-Apollo SwayPx
+- Post-Apollo Sway Config
 - Post-Apollo Pretty Kitty
 - Post-Apollo CRT-TV
 - Post-Apollo Zellij
