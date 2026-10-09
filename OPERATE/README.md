@@ -22,7 +22,7 @@ OPERATE is the practical interface for working with the user and the systems aro
 - [authority and permission boundaries](./AUTHORITY-AND-PERMISSIONS.md)
 - [debugging and planning](./DEBUGGING-AND-PLANNING.md)
 - [command / environment conventions](./COMMAND-ENVIRONMENT.md)
-- Post-Apollo working guidance
+- [Post-Apollo working guidance](./POST-APOLLO-WORKING-GUIDE.md)
 - Git / Hospital control-surface guidance
 - Hospital-compatible browser-agent and report protocols
 
@@ -34,7 +34,7 @@ The following current-facing documents will be promoted here from existing sourc
 2. ~~`AUTHORITY-AND-PERMISSIONS.md`~~ — promoted
 3. ~~`DEBUGGING-AND-PLANNING.md`~~ — promoted
 4. ~~`COMMAND-ENVIRONMENT.md`~~ — promoted
-5. `POST-APOLLO-WORKING-GUIDE.md`
+5. ~~`POST-APOLLO-WORKING-GUIDE.md`~~ — promoted
 6. `CONTROL-SURFACES.md`
 7. `HOSPITAL-AGENT-PROTOCOL.md`
 8. `HOSPITAL-REPORT-PROTOCOL.md`
