@@ -1811,6 +1811,530 @@ Treat the behavioral contracts above as the stable operator map.
 When diagnosing a visual complaint, inspect the current implementation rather than assuming this document freezes the exact current pixel geometry.
 
 
+# MEDIA // AUDIO
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+Media and audio are related but not interchangeable control domains.
+
+The current implementation has at least four distinct identities:
+
+```text
+PLAYBACK PLAYER
+MPRIS / MPD transport target
+
+MEDIA ITEM
+track / title / loaded media
+
+AUDIO STREAM
+PipeWire / PulseAudio sink-input observation
+
+DESKTOP OUTPUT
+default output sink / combined desktop mix
+```
+
+Do not collapse these into one "current audio source."
+
+A transport command can correctly target one player while a mute / volume mutation targets a different PipeWire stream.
+
+That is a real architectural distinction, not automatically a bug.
+
+## Current integration status // active development
+
+The current `main` branch contains:
+
+- `modules/Mediaplayer.qml`
+- `widgets/MediaDeckW.qml`
+- generic MPRIS transport support
+- MPD transport support
+- CAVA visualization
+- PipeWire stream evidence / targeting experiments
+- the extracted `ApplicationAudioService`
+- the universal-media-controller architecture draft
+
+At the current inspected `main` HEAD, `shell.qml` does **not** instantiate `Mediaplayer {}`.
+
+An open integration PR currently proposes wiring that module into the taskbar.
+
+That PR explicitly reports that the shell integration was not runtime-tested when opened.
+
+Therefore:
+
+> **The Hi-Fi implementation exists, but current remote `main` does not by itself prove that the dock is mounted in the running Taskbars shell.**
+
+The operator may be testing newer or local runtime state.
+
+Before making current-state claims about the Hi-Fi surface, re-check:
+
+```text
+current main
+current integration PR / branch
+live Quickshell state when available
+```
+
+Do not infer live integration from the presence of `MediaDeckW.qml`.
+
+## HI-FI // MEDIA DECK
+
+The current Hi-Fi prototype distinguishes two transport modes:
+
+```text
+LOCAL / MPD
+MPRIS / EXTERNAL
+```
+
+MPD is currently the default transport mode.
+
+MPRIS is opt-in.
+
+### LOCAL / MPD
+
+Current local transport uses `mpc`.
+
+Verified transport actions are:
+
+```text
+PREV
+PLAY
+PAUSE
+NEXT
+-5 SEC
++5 SEC
+STOP
+```
+
+The compact media module currently polls MPD state every two seconds.
+
+Its MPD state and CAVA state are independent.
+
+### MPRIS / EXTERNAL
+
+The current external-player adapter uses generic MPRIS discovery.
+
+It deliberately does **not** assume:
+
+- Brave
+- YouTube
+- one particular browser
+- one browser tab
+
+The user explicitly selects the MPRIS player.
+
+Visible current controls include:
+
+```text
+USE MPRIS
+NEXT PLAYER
+LOCAL / MPD
+```
+
+The adapter ignores `playerctld` relay instances so a relay is not mistaken for an independently addressable player.
+
+Per-action capability checks currently gate:
+
+- play
+- pause
+- stop
+- previous
+- next
+- seek backward
+- seek forward
+
+Sending a supported MPRIS command means the command was issued.
+
+It does **not** prove the remote player actually changed state.
+
+Observed MPRIS state remains the evidence of what happened.
+
+## Transport target != audio target
+
+This distinction is critical.
+
+```text
+MPRIS target
+→ which player receives PLAY / PAUSE / NEXT / SEEK
+
+PipeWire target
+→ which sink-input receives an audio experiment / mutation
+```
+
+The current Hi-Fi explicitly keeps these selections separate.
+
+Do not assume that selecting a browser/player through MPRIS identifies a unique browser audio stream.
+
+Do not assume that a matched PipeWire stream identifies a unique browser tab.
+
+## Audio-stream evidence
+
+The Hi-Fi currently consumes the extracted:
+
+```text
+services/audio/ApplicationAudioService.qml
+```
+
+as read-only stream physiology for its targeting experiment.
+
+The service observes PipeWire/PulseAudio sink inputs through:
+
+```text
+pactl -f json list sink-inputs
+```
+
+Useful raw evidence includes:
+
+```text
+stream index
+application.process.id
+application.process.binary
+application.id
+application.name
+media.name
+```
+
+These are observations.
+
+They are **not** canonical media, application, window, or tab identity.
+
+The extracted audio service owns:
+
+- sink-input discovery
+- descriptor-to-stream matching
+- match evidence
+- mute policy
+- one-shot mute synchronization
+- volume policy
+- actual sink-input mute / volume mutation
+- policy refresh machinery
+
+It does not own semantic desktop identity or tab discovery.
+
+## AUTO FOLLOW // evidence-gated targeting
+
+Current Hi-Fi targeting uses:
+
+```text
+AUTO FOLLOW
+```
+
+as the default mode.
+
+Automatic selection succeeds only when exactly one candidate PipeWire stream has a raw `media.name` that exactly matches the current MPRIS track title after narrow normalization.
+
+The current resolver intentionally refuses generic titles such as:
+
+```text
+playback
+audio
+unknown
+untitled
+media
+no track metadata
+default
+```
+
+If there is no unique exact title match, AUTO FOLLOW fails closed.
+
+Current statuses include relationships such as:
+
+```text
+EXACT MEDIA TITLE / TAB UNVERIFIED
+MULTIPLE TITLE MATCHES / SELECT STREAM
+NO EXACT TITLE MATCH / SELECT STREAM
+NO MPRIS PLAYER
+```
+
+The system must **not** silently select the first browser stream.
+
+A unique exact title match is still evidence only:
+
+> **exact media title != certified browser-tab ownership**
+
+## NEXT STREAM // explicit manual override
+
+`NEXT STREAM` manually cycles through the current candidate PipeWire sink inputs.
+
+A manual selection is bound to:
+
+- current MPRIS bus name
+- current media title
+- stream index
+- process ID / binary evidence
+- application ID
+- raw media name
+
+The binding expires when the media session changes.
+
+The current media-target resolver then returns to AUTO FOLLOW.
+
+A disappearing / replaced stream becomes stale rather than silently selecting its neighbor.
+
+Current manual status explicitly says:
+
+```text
+MANUAL STREAM / UNVERIFIED TAB
+```
+
+That wording is important.
+
+Manual selection proves operator choice of a stream observation, not browser-tab identity.
+
+## STREAM EVIDENCE // read-only diagnostic surface
+
+When exact-title matching fails, the current empty cassette bay can show a temporary:
+
+```text
+STREAM EVIDENCE / READ ONLY
+```
+
+panel.
+
+It displays up to three current candidate sink-inputs with evidence such as:
+
+- stream index
+- raw `media.name`
+- application name
+- binary
+- PID
+
+The purpose is comparison against the MPRIS media title.
+
+It does not perform volume or mute mutation.
+
+Treat that panel as diagnostic evidence.
+
+Do not "fix" a mismatch by automatically choosing the first row.
+
+## ARM TEST // temporary audio experiment
+
+The Hi-Fi currently has an explicitly experimental audio-isolation bench.
+
+Visible controls include:
+
+```text
+ARM TEST
+NEXT STREAM
+MUTE / 3S
+VOLUME / 3S
+```
+
+The test requires an explicit resolved target and explicit arming.
+
+Arming is consumed by the next experiment.
+
+A changed media session or changed target requires re-arming.
+
+The helper validates the selected stream fingerprint before mutation and before restoration.
+
+Current tests:
+
+```text
+MUTE / 3S
+→ temporarily mute selected sink-input
+→ request restoration of prior mute state
+
+VOLUME / 3S
+→ temporarily halve selected sink-input channel values
+→ request restoration of prior values
+```
+
+These are test-bench operations.
+
+They are **not** certification that the permanent Hi-Fi has safe per-tab volume control.
+
+If two browser tabs share one sink-input, both may change together.
+
+That result means isolation failed for that path.
+
+Even if only one tab changes in one experiment, the current test contract explicitly treats that result as promising evidence rather than universal proof of tab isolation.
+
+## Current audio targeting safety rule
+
+Use the current relationship:
+
+```text
+MPRIS player
+        ↓
+application / process evidence
+        ↓
+candidate PipeWire streams
+        ↓
+exact-title evidence OR explicit manual stream selection
+        ↓
+armed temporary experiment
+```
+
+Do not shorten this to:
+
+```text
+browser selected
+→ mutate first browser stream
+```
+
+The latter is specifically disallowed by the current implementation.
+
+## CAVA // current vs intended behavior
+
+The compact media module currently launches its own CAVA process.
+
+Its current CAVA configuration uses:
+
+```text
+PulseAudio-compatible input
+source = auto
+```
+
+against the default desktop output.
+
+Therefore the current visualizer represents the mixed desktop output, not isolated deck-owned media.
+
+The architecture draft distinguishes future:
+
+```text
+CAVA Desktop
+→ combined desktop output
+
+CAVA Player
+→ deck-owned audio only
+```
+
+That Player-only isolation is an intended architecture boundary, not a certified current implementation.
+
+Do not describe today's CAVA as per-player isolated.
+
+## DESKTOP VOLUME BAR
+
+The ordinary taskbar Volume module is a separate control surface from the Hi-Fi.
+
+It uses Quickshell's PipeWire service and targets:
+
+```text
+Pipewire.defaultAudioSink
+```
+
+Current direct controls are:
+
+```text
+right click
+→ mute / unmute default sink
+
+mouse wheel
+→ change default sink volume by 5%
+```
+
+This is **desktop output volume**.
+
+It is not the Hi-Fi's planned music-only volume.
+
+Do not substitute one for the other.
+
+## APPCONTROL AUDIO
+
+AppControl currently has application / window / tab audio presentation and mutation behavior.
+
+Current live donor code still performs direct `pactl` stream probing / mutation and maintains APP / WINDOW / TAB audio policy state internally.
+
+The separately extracted `ApplicationAudioService.qml` also exists.
+
+Therefore current audio architecture is **partially extracted but not fully unified**.
+
+Do not assume every AppControl audio action already routes through the shared extracted service.
+
+Before changing this seam:
+
+1. inspect current AppControl audio donor code;
+2. inspect the current extracted service;
+3. inspect current identity/provider contracts;
+4. preserve APP / WINDOW / TAB scope semantics;
+5. avoid creating a third competing stream-mutation engine.
+
+## APP / WINDOW / TAB audio identity
+
+The audio service's central rule is:
+
+> **matching evidence is not semantic identity**
+
+APP, WINDOW, and TAB may all match the same sink-input.
+
+They may also have distinct policy scopes.
+
+A PID match is strong process-attachment evidence but is not persistent application identity.
+
+A PipeWire sink-input index is ephemeral.
+
+Provider-owned tab/window/application identity must come from the appropriate identity/discovery layer rather than being invented by the audio service.
+
+This matters especially for browsers where:
+
+```text
+one MPRIS player
+one browser process
+one PipeWire stream
+one browser tab
+```
+
+are not guaranteed to have a one-to-one relationship.
+
+## UNIVERSAL MEDIA CONTROLLER // architecture draft, not current runtime
+
+The repository also contains:
+
+```text
+MODEL/contracts/media-controller-v0-draft.md
+```
+
+Its current status is explicitly:
+
+```text
+Architecture draft
+no executable implementation is certified by this document
+```
+
+The proposed future architecture separates:
+
+```text
+UI consumer
+source/provider adapter
+Universal Media Controller
+playback-backend adapter
+```
+
+and separately models:
+
+- Source
+- MediaRef
+- BrowseContext
+- Selection
+- LoadedMedia
+- PlaybackSession
+- VisualizationMode
+
+Important intended rules include:
+
+- browsing does not replace loaded media
+- selection does not imply load
+- load does not imply play
+- source/provider identity does not equal playback backend identity
+- player volume must not alter unrelated desktop/browser audio
+- a future controller should not depend on Brave
+- a running session must not silently switch backend or seize an unrelated player
+
+These are architecture commitments / draft contract statements.
+
+Do not describe the permanent universal controller, provider registry, YouTube browsing, isolated Player CAVA, or music-only volume as already implemented.
+
+## Media guidance rule
+
+For current Media / Audio work:
+
+1. determine whether the question is about playback transport, media identity, audio stream identity, or desktop output;
+2. do not infer one identity from another;
+3. treat MPRIS state and PipeWire observations as evidence at their own layers;
+4. use the Hi-Fi's explicit target / status text literally;
+5. fail closed on ambiguous stream targeting;
+6. use the taskbar Volume control for desktop output, not as a substitute for player-only volume;
+7. re-check current `main`, active media integration work, and live shell state before modifying the rapidly changing Hi-Fi;
+8. preserve the existing shared-audio-service boundary rather than adding another mutation backend.
+
 # SOCIAL // SESSIONS // DISCORD
 
 **Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
@@ -2281,6 +2805,7 @@ Verified implementation facts in the current version were drawn from:
 - Post-Apollo Zellij
 - Post-Apollo Oh My Apollo
 - Post-Apollo Astro Snacks
+- The Post-Apollo Project media / audio services and Hi-Fi prototype
 
 Technical behavior remains canonical in the repository that owns it.
 
