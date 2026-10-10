@@ -1,102 +1,201 @@
 ✦︎✦︎✦︎ Meta Apollo Logos //
 
-# 🏥 OPERATE // HOSPITAL ORGANIZATION AND STAFF PROTOCOL
+# 🏥 OPERATE // HOSPITAL ORGANIZATION PROTOCOL
 
-> **STATE //** review candidate, based on operator-established roles
+![](../BUILD/assets/design/chassis/agency-rail.svg)
+
+> **STATE //** active · operator-established staff and Team definitions
 >
-> **VIEW //** staff semantics, delegated authority, coordination, and Room continuity
+> **VIEW //** organizational semantics, jurisdiction, delegation, continuity
 >
-> **OWNER //** operator. This document does not grant an agent the right to approve its own authority.
+> **OWNER //** operator. Role titles do not independently grant authority.
 
-## Purpose and jurisdiction
+## PURPOSE // CONTINUITY WITHOUT MULTIPLYING CONTEXT
 
-Hospital is the coordination model for replaceable workers operating on enduring Patients and Rooms. This protocol describes **organizational roles**, not technical implementation or Git certification rules.
+Hospital organizes replaceable workers across enduring repositories and jobs. This protocol preserves the operator's exact intended distinctions between staff, Teams, and jurisdictions, allowing complex work without forcing every AI to carry all of Post-Apollo's context.
 
-The existing [Hospital Agent Protocol](./HOSPITAL-AGENT-PROTOCOL.md) defines Patient, Room, Assignment, Doctor, Provider, and Session. The existing [Hospital Report Protocol](./HOSPITAL-REPORT-PROTOCOL.md) defines formal reports and handoffs. [Authority and Permissions](./AUTHORITY-AND-PERMISSIONS.md) controls whether an action may be performed. Those contracts remain in force: this file specializes their staff roles and must not duplicate or silently override their technical rules.
+This is **organizational policy**, not a claim that these roles or their automation are already registered in live Hospital. It extends [Hospital Agent Protocol](./HOSPITAL-AGENT-PROTOCOL.md) and [Hospital Report Protocol](./HOSPITAL-REPORT-PROTOCOL.md). [Authority and Permissions](./AUTHORITY-AND-PERMISSIONS.md) still governs the right to act; [Post-Apollo Working Guide](./POST-APOLLO-WORKING-GUIDE.md) still governs scope, tests, concurrent edits, and acceptance.
 
-**Do not confuse a title, an organizational role, a source/model provider, an Assignment, and a permission.** They are separate dimensions.
+**Role ≠ worker identity ≠ provider ≠ Team ≠ Room ≠ Assignment ≠ permission.**
 
-## 1 // Organizational scale
+## 1 // ORGANIZATIONAL DEFINITIONS
 
-- **Operator:** final source of purpose, acceptance, and delegation.
-- **Proxy Doctor (PXD):** at most one designated operator-wide proxy. Its purposes, priorities, and permissible actions derive from the operator's delegation. It is not an independent personality, authority, or replacement for the operator.
-- **Receptionist:** one Hospital-wide coordination/intake role.
-- **Head Nurse:** one Hospital-wide nursing coordinator; coordinates a high-throughput queue of cleanup, documentation, standardization, and verification jobs.
-- **Patient Manager:** one designated management owner per Patient when staffed; coordinates work within that repository/patient boundary.
-- **Head Surgeon:** one designated surgical lead per Patient when staffed; coordinates significant technical operations affecting that Patient.
-- **Nurse:** a replaceable worker handling bounded cleanup, documentation, standardization, triage, small fixes, and verification.
-- **Intern:** an investigative/reconnaissance worker. Read-only by default; may inspect, compare, catalog, and report. Does not mutate code or docs without explicit reassignment or specific authorization under an Assignment.
-- **Doctor / Surgeon:** a scoped implementation or repair worker, engaged when substantive code intervention or architectural surgery warrants that lane.
+| TERM | DEFINITION |
+| --- | --- |
+| **Hospital** | Shared coordination environment across repositories and workers |
+| **Patient** | Repository: the enduring whole being worked on |
+| **Team** | Bounded family of related tasks that need unusually close mutual coordination; has one or many members |
+| **Room** | Durable identity and continuity of a particular job, surviving worker replacement |
+| **Assignment** | Structured work contract inside a Room: goal, scope, permissions, checklist, completion criteria |
+| **Worker** | Generic replaceable participant, independent of its assigned staff role |
+| **Doctor** | Specific ordinary-work staff role; existing Agent Protocol also uses "doctor" generically for a Hospital-compatible worker |
+| **Provider** | Model/agent execution source, such as ChatGPT, Codex, Hermes; not a staff rank |
+| **Session** | One runtime/conversation attachment to a Room |
+| **Bed** | Worktree/checkout used for development |
+| **Specialist contract** | Bounded outside agent/harness work commissioned through Hospital Phone |
 
-**A Patient Head Surgeon and the global PXD are not synonyms.** A PXD may serve a particular surgical coordination function only when the operator's explicit delegation covers it.
+A Team can contain multiple Rooms. Some older Rooms were named after Teams; their names remain valid, but Room and Team **are not synonyms**. Team membership changes do not erase the Team or its Rooms.
 
-A **Team** is a persistent bounded family of related work; it may contain one or many staff members. A Team does not create its own Head Nurse or Head Surgeon by default. Teams and Rooms are not interchangeable: a Room preserves one job's continuity, while a Team groups related work and workers.
+A Team is usually scoped to one Patient or closely related subsystem, but may explicitly coordinate work involving multiple Patients. That relationship does not transfer ownership from either repository.
 
-The above describes the target organizational grammar, **not a claim that each position is currently staffed or registered in live Hospital**.
+## 2 // STAFF DIRECTORY AND JURISDICTION
 
-## 2 // Authority is not inferred from seniority
+| CODE | ROLE | JURISDICTION / COUNT |
+| --- | --- | --- |
+| **RCP** | Receptionist | Exactly **one per Hospital** |
+| **HNS** | Head Nurse | **One per Hospital preferred**; additional only when needed |
+| **MGR** | Manager | **One per Patient/repository** |
+| **HSG** | Head Surgeon | **One per Patient/repository** |
+| **HIN** | Head Intern | Multiple; long-lived Patient/Team structural familiarity |
+| **INT** | Intern | Multiple; one-off research and tiny fixes |
+| **NRS** | Nurse | Multiple; cleanup, bug fixes, Meta Apollo sync, verification |
+| **DOC** | Doctor | Multiple across any number of Teams; normal work |
+| **PXD** | Proxy Doctor | Multiple possible; operator-directed construction, not global command |
+| **SPC** | Specialist | External bounded Phone contractor; availability limited by actual agents/harnesses |
 
-Role determines expected responsibility and scope; an Assignment determines the actual job, owned seam, boundaries, and allowed operations. A role name by itself does not give write, merge, integration, or local-machine authority.
+**One per Patient is a position, not a permanent worker.** A Manager or Head Surgeon can be replaced without changing Patient identity. No Team receives its own Head Nurse or Head Surgeon, though Teams may contain Nurses, Interns, Head Interns, Doctors, or Proxy Doctors. The Receptionist and Head Nurse are Hospital-wide, while Manager and Head Surgeon are Patient-specific.
 
-Hospital Assignments currently expose permission names such as `READ`, `EDIT`, `TEST`, `COMMIT`, `PUSH`, `OPEN_PR`, and `INTEGRATE`. Use explicit permissions; do not infer them from `Head`, `Proxy`, `Doctor`, or `Nurse`.
+## 3 // ROLE DEFINITIONS
 
-For the Intern role, the default work contract is **inspect/report, no modification**. Escalation, reassignment, or a newly scoped approval is required for mutation. Nurses are **not categorically prohibited** from code changes; route comparatively large or architecture-sensitive repairs to Doctors so the cleanup queue is not stalled.
+### RECEPTIONIST // RCP
 
-A PXD acts through delegated operator agency, never through self-invented purposes or blanket permissions. Final `DONE` belongs to the operator, as in the existing Hospital protocol.
+The Receptionist is Hospital's singular front desk: an AI/code-based assistant that helps the operator navigate Hospital, maintain awareness of Room/staff status, contact workers, relay user commands, and return information. GitHub Copilot is **planned** to improve repository and GitHub help; this policy does not claim Copilot is already integrated.
 
-## 3 // Chat identity is not Room identity
+Reception distributes instructions **within their original authority**, never independently approves surgery or invents the user's intent. It needs to know *where* information and responsibility live, not every repository's detailed implementation.
 
-A browser ChatGPT conversation may act as an external Hospital-compatible worker without being connected to live Hospital. Do not claim registration or persistence until verified.
+### HEAD NURSE // HNS
 
-Keep separate:
+The Head Nurse is a **high-frequency, context-light operational coordinator**, rather than another Patient Manager. Handles the repeatable things the Manager would otherwise have to do: send a bounded task to one Team, manage Interns, read or compare two or three reports or files, gather findings, help draft reports, check GitHub navigation, perform routine verification, approve/send routine reports, graphs and already-authorized actions, and prepare concise escalations.
 
-- **Conversation reference:** a specific chat/session link or stable identifier, not merely its visible title.
-- **Staff label:** e.g. `Nurse 3`, `C2`, `C4`. Labels need not be chronological; never renumber to make a sequence.
-- **Role:** e.g. `NURSE`, `INTERN`, `HEAD_NURSE`, `PXD`.
-- **Patient:** repository.
-- **Room:** enduring job/continuity identity.
-- **Assignment:** goal, scope, constraints, permissions, checklist, definition of done, status.
-- **Provider:** e.g. `OPEN AI // CHATGPT`; not a Room or staff role.
+She should **not** spend her context doing substantial coding or regular bug fixing. Even a tiny syntax correction is preferably delegated to an Intern or Doctor. She can perform one herself as an authorized, exceptional fallback when no worker is available or delegation would be disproportionate.
 
-Repeated chat titles such as `Greeting Exchange` are **not unique keys**. Bind the intended chat to a Room and Assignment using a stable reference, and avoid assigning a new role based only on title resemblance.
+The Head Nurse **manages Interns**. If a finding has shared architectural consequences, she routes the evidence to the relevant Patient Manager instead of loading the whole system into her own context. One per Hospital is the default; additional Head Nurses are exceptional, not one per repository.
 
-The generic external Doctor label in the Hospital Agent Protocol is a compatibility default for an **unassigned** worker. An explicit organizational assignment (Nurse, Intern, Head Nurse, PXD, etc.) specializes it without severing Hospital-compatible Patient/Room/Assignment/report semantics.
+### MANAGER // MGR
 
-A role change does not rewrite the chat's history. A Room can outlive a replaced worker.
+The Manager is the **Patient-specific, high-context, consequential coordinator**. Performs normal work if needed, approves/sends reports, graphs, and scoped actions, verifies relevant evidence, and uses broad Patient awareness to allocate work and respond to dependencies across Teams.
 
-## 4 // Cleanup work and escalation
+Manager decisions are relatively low-frequency but high-impact. If a Team finding could disrupt Favorites or multiple other components, the Manager considers the dependency graph, integration order and affected Teams, then issues appropriate assignments. A Manager who routinely collects every tiny file or report loses the context necessary for this role; the Head Nurse handles that throughput instead.
 
-The nursing lane prioritizes many small, bounded items over absorbing a large surgery.
+**The Manager cannot manage Interns.** Approval of a graph/report is not automatically approval to mutate code, nor does role title supersede operator authority.
+
+### HEAD SURGEON // HSG
+
+There is **one Head Surgeon per Patient**, not one for all Hospital. A separate large repository—for example a Weather Station Patient—gets its own surgical lead rather than sharing the AppControl Patient's Head Surgeon.
+
+The Head Surgeon conducts major or mass surgery and integration, receives **more relevant architectural and surgical context**, performs little or no routine research, and produces **denser reports** accounting for shared seams, verification, dependencies, and remaining risks. Research should arrive through Interns, Head Interns, Teams, or contracted Specialists.
+
+The role is not a universal authority over unrelated Patients or protected files. Surgical integration still follows exact current Git evidence, ownership, accepted permissions, and operator review.
+
+### HEAD INTERN // HIN
+
+The Head Intern is a **long-lived, low-activity structural reconnaissance and succession reserve**. Occasional research and small bug fixes build familiarity with entire repositories, modules, and how they interconnect, without filling active context with a mass surgery's every turn.
+
+Regular Interns often investigate a single issue or file; a Head Intern knows the wider body. Its purpose includes the ability to **step directly into Head Surgeon responsibility** when one disappears. It does not have to become a regular Doctor first.
+
+This is **not** an Intern manager; that remains the Head Nurse. Knowledge may be architecturally broad but temporally stale. On succession, reacquire current Patient/Room state, reports, checklist, Git HEAD, ownership, and permissions. Appointment to Head Surgeon is explicit, not automatic, and the Head Intern's structural atlas should be recoverable outside one conversation.
+
+### INTERN // INT
+
+Interns perform specific, comparatively small work: one-off research, file/issue analysis, finding a bug, gathering evidence, comparing sources, or **tiny authorized fixes**. They generally need narrow task context, not a global repository map. Read-only work stays read-only; a tiny repair requires actual scoped edit permission. Interns do not manage other Interns.
+
+### NURSE // NRS
+
+Nurses handle maintenance: cleanup, bug fixes, Meta Apollo synchronization/consistency work, and verification. This is distinct from the Head Nurse's dispatch/report-comparison duties. If work becomes major architecture or another worker's shared seam, report and escalate rather than silently expanding scope.
+
+### DOCTOR // DOC
+
+Doctors perform normal implementation, repair, testing, and development under their Room Assignments. There may be many Doctors on many Teams. Their Team affiliation does not make them a Team-level Head Surgeon, Manager, or source of unbounded permissions.
+
+### PROXY DOCTOR // PXD
+
+**Proxy Doctor** is the operator-selected official name for a construction-oriented AI acting as an **extension of its creator's agency**. The defining relationship is:
 
 ```text
-intake / identify
-→ attach Patient + Room + Assignment + staff role
-→ inspect current authority and ownership
-→ perform authorized bounded work
-→ verify appropriate evidence
-→ checkpoint or full report
-→ operator review / next queued item
+CREATOR → PROXY → CREATION
 ```
 
-When a Nurse discovers a substantial AppControl repair, shared host-seam collision, or architectural expansion, preserve evidence and create a handoff/escalation to the responsible Doctor or Patient Head Surgeon. Continue unrelated, safe nursing work; do not silently expand the Nurse's Assignment.
+The creator acts indirectly through the Proxy Doctor, as through a pen, crane, or vector program—except the proxy can reason and perform complex construction. It acts **within its creator's will**. Its purpose, operating behavior, and expressed personality come from the creator's instructions, often reflecting the creator's own personality, or a persona chosen for the task; it does not independently establish a competing purpose or personality.
 
-An Intern can discover and describe the same fault but does not convert diagnosis into implementation without authorization.
+The Proxy Doctor is primarily used **to build rather than modify/maintain**: new programs, components, systems, prototypes or replacements. Building separately may be a useful safety mode, but isolation is **not the definition of proxy**. Construction does not authorize integration or changes to protected originals.
 
-## 5 // Reporting: tiny checkpoint versus formal report
+**Do not rename this role Shadow Doctor or redefine it as the proxy of another Doctor.** It is a proxy *of its creator*. It is not necessarily unique per Hospital or a leadership rank.
 
-**Every completed scoped job receives an operator-visible completion checkpoint**, even when the result is small. Use a *micro-checkpoint* for ordinary tiny cleanup, for example:
+### SPECIALIST // SPC
+
+A Specialist is an **external AI agent or harness hired/contracted through Hospital Phone** for a bounded task. Its contract identifies the originating Room, objective, scope, permissions, expected deliverables, evidence and return route.
+
+A Specialist need not absorb the rest of Hospital's history. A connected harness may fulfill many types of work, but being contracted neither grants leadership nor allows silent scope expansion. The Specialist role and its provider are separate.
+
+## 4 // TEAM // A RELATED WORK FAMILY, NOT A HEADCOUNT
+
+A Team is organized by the **relatedness of tasks and dependencies**, not by how many AIs happen to be available. A one-member Team is as valid as a five-member Team; it can expand or contract without renaming its organ, Patient or purpose.
+
+For example, Team 3 may contain T3-M, T3-R and T3-F, each with a distinct Room/assignment. The suffixes identify local members or sublanes; **they do not inherently mean Manager, Reviewer, Files, or a staff rank**. The Team record establishes their meaning.
+
+Within a Team, members should know more about each other than unrelated workers do, because they share collisions, contracts, and dependencies. They may communicate and share reports directly rather than visiting the Manager for every small question.
+
+Discovering another defect within the same bounded work family does not require inventing a different Team. Adding members or tasks is permitted only within the authorized scope; crossing into another Team's ownership, shared host tissue, broad architecture or another Patient requires an explicit handoff, coordination or escalation.
+
+**Team ≠ Room. Room ≠ Doctor. A Team is not entitled to its own Head Nurse or Head Surgeon.**
+
+## 5 // DELEGATION, REPORT FLOW, AND DECISIONS
+
+The following is a useful default flow, **not a mandatory chain for every conversation**:
 
 ```text
-TARGET // Patient / Room / Assignment
-ACTION // what changed (or: read-only finding)
-VERIFY // what was actually checked
-STATE // implemented / blocked / awaiting review / other truthful status
-NEXT // next owner or action
+OPERATOR ↔ RECEPTIONIST (navigation / relay)
+PATIENT MANAGER (consequential Patient-wide decisions)
+      ↕
+HEAD NURSE (routine dispatch / Intern management / report comparison)
+      ↕
+TEAMS ↔ THEIR MEMBERS (close internal coordination)
+      ↕
+DOCTORS / NURSES / INTERNS / HEAD INTERNS / PROXY DOCTORS
+
+PATIENT HEAD SURGEON ↔ MANAGER + TEAMS (mass surgery)
+PHONE → SPECIALIST (bounded external contract)
 ```
 
-A micro-checkpoint is a visible update, not a claim that a persistent Hospital Room Report was written.
+The Head Nurse can ask one Team to inspect a problem, compare its two or three reports, and forward a concise **source-linked decision packet** to the Manager. The Manager uses the wider Patient dependency map to decide which other Teams need actions and whether the Head Surgeon must be involved.
 
-At meaningful boundaries (blocker, ownership collision, scope expansion, transfer, substantial milestone, landing, failed verification, final technical verification, handoff), use the **full Hospital Report Protocol**, with its canonical seven sections:
+A Favorites problem may affect several AppControl consumers. The Head Nurse only needs enough awareness to flag that **the boundary is wider than her packet**; the Manager retains the wider context required to act. Neither needs to absorb the other's whole conversation.
+
+**Approval remains scoped**:
+
+- Head Nurse: routine reports/graphs/authorized local dispatch and verification, Intern management.
+- Manager: consequential Patient-wide graphs, reports, prioritization and coordinated Team actions; **not Intern management**.
+- Head Surgeon: complex Patient surgery/integration in its assigned authority.
+- Operator: governing intent, permission escalation where required, and final DONE.
+
+An approval to transmit a report, approval of a dependency graph, permission to issue an action, evidence that it succeeded, and operator acceptance are **different states**. Staff titles never waive explicit approval required for live local writes or destructive operations.
+
+Cross-Patient dependencies are communicated between the relevant Patient Managers/Head Surgeons. Neither Patient automatically absorbs ownership of the other.
+
+## 6 // CONTEXT DISTRIBUTION AND SUCCESSION
+
+**Context is a resource to conserve, not a seniority prize.** A role should load the smallest relevant context that still preserves its required relationships:
+
+| ROLE | DEFAULT CONTEXT |
+| --- | --- |
+| Intern | Narrow question and source evidence |
+| Nurse | Maintenance target, local tests and relevant neighbors |
+| Doctor | Assignment, owned code, relevant dependency seams |
+| Proxy Doctor | Creator's construction intention and artifact constraints |
+| Head Intern | Broad structural atlas, few active surgery details |
+| Head Nurse | Task queue, Interns, a few reports, escalation destinations |
+| Manager | Patient-wide Team graph, consequences, decisions, blockers |
+| Head Surgeon | Dense *relevant* architecture and integration evidence |
+| Receptionist | Awareness of who, where, status and communication routes |
+| Specialist | Bounded Phone contract and necessary inputs |
+
+When a Head Surgeon is replaced by a Head Intern, the new lead retains its broad structural knowledge but reconstructs live surgery state from **Patient + Room + Assignment + reports/checkpoints + current Git evidence**. It does not need to replay every conversational turn.
+
+All workers remain replaceable; a chat title or historic HEAD is not a trusted source of live state. Keep structure and evidence pointers externally recoverable.
+
+## 7 // REPORTS AND HANDOFFS // PRESERVE EXISTING SCHEMA
+
+The [Hospital Report Protocol](./HOSPITAL-REPORT-PROTOCOL.md) already defines the seven ordered headings. **Do not create a different official report schema per role**:
 
 ```text
 IMPLEMENTATION
@@ -108,58 +207,54 @@ NEXT
 DECISIONS
 ```
 
-Scale the content density to the task. Do not generate a large ceremony for each tiny adjustment, but do not omit a checkpoint when an assignment is finished. Do not mark final user acceptance by inference.
+Report **density** changes, not the schema: tiny Intern findings can be terse; a Head Nurse report comparison names its source reports and what needs higher authority; a Head Surgeon produces dense surgical evidence. Do not produce a ceremonial full Report after every trivial intermediate action.
 
-## 6 // Migration and registry entries
+A full Report is required at existing meaningful boundaries (blocker, collision, scope expansion, milestone, landing, failed verification, handoff), and the explicit `REPORT` command still requests one. A small operational update can exist without pretending to be a persisted Hospital Report or inventing a competing `micro-checkpoint` standard.
 
-When recruiting an existing conversation, record at least:
+External-browser report headers may **optionally** include `TEAM //` and `STAFF ROLE //` for clarity, while keeping the original Patient/Room/Doctor/Provider/Assignment header intact. Do not claim connected registration or report persistence without verifying it.
+
+A handoff keeps `REPORT KIND // HANDOFF`, all canonical sections, current checklist, ownership, blockers and source evidence, and instructs the successor to reacquire live Git truth. **Final DONE belongs to the operator.**
+
+## 8 // COMPACT ROLE AND TEAM PACKETS
+
+Staff codes are standardized short labels, **not tokens that grant permission**. An external worker may use a compact, human-readable admission record such as:
 
 ```text
-CONVERSATION REF // unique actual chat reference if available
-STAFF LABEL // preserve existing label
-ROLE // assigned staff type
-PATIENT // owning repository or MULTI-PATIENT coordination scope
-ROOM // specific durable job
-ASSIGNMENT // purpose and definition of done
-OWNED SCOPE // files, semantics, seams, or analysis lane
-PERMISSIONS // explicit capabilities; default to READ for Intern
-STATUS // reported current state, with observation date
-LATEST EVIDENCE // source report, HEAD, test, or conversation reference
-NEXT / HANDOFF // smallest justified continuation
+HOSPITAL // COMPATIBLE
+PATIENT // <repository>
+TEAM // <bounded work family or NONE>
+ROOM // <durable job>
+ASSIGNMENT // <work contract>
+STAFF ROLE // DOC
+WORKER // <worker identity>
+PROVIDER // OPEN AI // CHATGPT
+CONNECTION // EXTERNAL
+SCOPE // <owned tissue / files / contracts>
+PERMISSIONS // <explicitly approved>
+DEPENDENCIES // <relevant Rooms / Teams / reports>
+EVIDENCE // <source + as-of, or UNAVAILABLE>
+NEXT // <justified continuation>
 ```
 
-Capture uncertainty explicitly: `UNIDENTIFIED CHAT`, `ROLE PROPOSED`, or `STATUS UNVERIFIED` are better than a guessed relationship. The roster can begin as an external coordination record. Live Hospital registration is a separate technical integration task.
+A Team label such as `T3-F`, chat title such as `Greeting Exchange`, or staff label such as `Nurse 3` is not by itself a unique persistent Room/session identity. Bind a real reference before claiming a chat or worker is connected.
 
-**Do not assign role IDs by chat creation date.** Recruitment order, staff label, organizational rank, and Room identity are independent.
+This packet is a **pointer for reconstructing context**, not a compressed replacement for evidence that has not been inspected.
 
-## 7 // Supersession and source of truth
+## 9 // SCOPE, COMPATIBILITY, AND SOURCE
 
-- **Proxy Doctor (PXD)** is the selected term for the user's proxy-agency concept. Do not replace it with the previously suggested `Shadow Doctor` label. Historical appearances remain source/provenance, not current terminology.
-- `Proxy Nurse` is **not** an approved synonym for either PXD or Head Nurse; do not invent it as a permanent position.
-- A user-approved later policy may specialize or supersede an earlier rule. Record its source, effective decision, and replacement link; do not erase historical evidence.
-- An incomplete general policy is not necessarily a contradiction with a new specialized one. Classify `EXTENDS`, `CONFLICTS`, and `SUPERSEDES` separately.
-- How I Think owns the collaborative working interface. Meta Apollo governs family-wide philosophy/design language. The relevant Patient repository owns technical contracts and runtime facts; Hospital owns its operating state; PX owns the control-plane operations it performs. Point to the owner rather than maintaining conflicting full copies.
-- Browser chats and GitHub branches are not automatically synchronized. Inspect current evidence and record handoffs before claiming current state.
+This document formalizes the operator's organizational definitions. It does not create live staffing records, change PX's permission engine, connect Copilot, implement Receptionist command dispatch, attach browser conversations to live Hospital, or perform surgery. These require separate authorized and verifiable technical work.
 
-## 8 // Implementation boundary
+Keep these distinctions invariant:
 
-This document defines the **organizational semantics** and a migration procedure. It does not by itself:
+- **One Receptionist per Hospital; one preferred Head Nurse per Hospital, more only when needed.**
+- **One Manager and one Head Surgeon per Patient**, not globally and not per Team.
+- **Head Nurse manages Interns; Manager does not.**
+- **Head Intern is a low-workload structural/succession reserve, not a supervisor.**
+- **Teams are task families; membership varies without changing Team identity.**
+- **Proxy Doctor means the creator's proxy for construction**, not Shadow Doctor or replacement of another Doctor.
+- **Specialist is a contracted outsider via Phone**, not generic permanent Hospital staff.
+- **Role and report approval are not blanket authority**; current-state evidence and operator acceptance remain required.
 
-- rename or link existing browser chats;
-- appoint a live Proxy Doctor or Receptionist;
-- install an automated staffing/permission engine;
-- register a Room in the Hospital runtime;
-- enforce real-time synchronization among chats;
-- change existing Hospital certification or Git evidence machinery.
+This protocol preserves the operator's explicit decisions and corrections from the October 2026 Hospital organization discussions. If implementation and written guidance disagree, inspect current technical owners and report the discrepancy; do not guess that policy has already become live behavior.
 
-Those require separate, scoped assignments and verification.
-
-## Related authority
-
-- [Hospital Agent Protocol](./HOSPITAL-AGENT-PROTOCOL.md) — Patient, Room, Assignment, external provider identity.
-- [Hospital Report Protocol](./HOSPITAL-REPORT-PROTOCOL.md) — formal reports and handoffs.
-- [Authority and Permissions](./AUTHORITY-AND-PERMISSIONS.md) — actuation and approval boundaries.
-- [Post-Apollo Working Guide](./POST-APOLLO-WORKING-GUIDE.md) — technical preflight, reuse, collisions, acceptance.
-- [Source Map](../ATLAS/SOURCE-MAP.md) — provenance and canonical-owner routing.
-
-> **Working principle:** Preserve the job, not the chat; preserve the authority, not an inferred title; report what changed; retrieve the rest when needed.
+> **Preserve the work, not the worker; preserve the relationships, not merely the names; retrieve context only where needed.**
