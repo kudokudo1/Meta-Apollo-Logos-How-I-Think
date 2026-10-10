@@ -2441,6 +2441,326 @@ Treat Telegram as **present in the UI but not verified as a complete current int
 
 Do not tell the user that Telegram is working merely because its selector button exists.
 
+# NETWORK // BLUETOOTH
+
+**Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
+
+Network and Bluetooth sit beside each other on the taskbar, but their current implementation maturity is very different.
+
+```text
+NETWORK
+→ live telemetry + external connection editor + AppControl interface control
+
+BLUETOOTH
+→ current visual dock surface only
+```
+
+Do not infer feature parity from their adjacent placement.
+
+# NETWORK
+
+The Network dock is a live connectivity/status surface.
+
+Current implementation combines:
+
+- Quickshell networking objects
+- NetworkManager / `nmcli`
+- `iw`
+- `ethtool`
+
+## Current Wi-Fi state
+
+The module discovers the current Wi-Fi device through:
+
+```text
+Quickshell.Networking
+DeviceType.Wifi
+```
+
+and uses the connected network object for the visible network name.
+
+It separately probes:
+
+```text
+nmcli radio wifi
+```
+
+for Wi-Fi enabled state and:
+
+```text
+nmcli -t -f IN-USE,SIGNAL dev wifi
+```
+
+for the active Wi-Fi signal percentage.
+
+Current signal tiers are:
+
+```text
+< 25%
+→ weak
+
+25–49%
+→ low
+
+50–74%
+→ medium
+
+75%+
+→ strong
+```
+
+The visual icon changes with those tiers.
+
+Wi-Fi link speed is currently sampled through `iw` and displayed in Mb/s.
+
+The Network module refreshes these observations every:
+
+```text
+500 ms
+```
+
+and also probes immediately when the component starts.
+
+## Current visible Wi-Fi data
+
+The current text surface shows:
+
+```text
+connected network name / SSID
+signal percentage
+link speed
+```
+
+If Wi-Fi is enabled but no network is active, the module shows a disconnected state.
+
+If Wi-Fi radio is disabled, it uses the separate offline/star presentation.
+
+These visible states are runtime observations.
+
+Treat them as evidence of the current networking relationship rather than decorative-only state.
+
+## Left click // NetworkManager editor
+
+Current left-click behavior is:
+
+```text
+Network dock
+→ nm-connection-editor
+```
+
+So configuration / saved-connection management is currently delegated to NetworkManager's connection editor rather than a custom Post-Apollo network menu.
+
+Do not pretend there is a native Post-Apollo Wi-Fi chooser when current code opens `nm-connection-editor`.
+
+## Ethernet observation
+
+The Network module also probes Ethernet using:
+
+```text
+nmcli -t -f DEVICE,TYPE,STATE,CONNECTION device
+```
+
+and records:
+
+- Ethernet device name
+- connected / disconnected state
+
+When an Ethernet device name exists, it also probes:
+
+```text
+ethtool <device>
+```
+
+for link speed.
+
+## Right click // current Ethernet presentation toggle
+
+Current right click toggles:
+
+```text
+ethernetMode
+```
+
+This switches the icon area into the animated Ethernet / ECG-style presentation.
+
+Important current limitation:
+
+> **The Ethernet-mode toggle does not currently replace the main text/data column with Ethernet-specific values.**
+
+The visible text fields still use the Wi-Fi-side:
+
+- active network name
+- Wi-Fi signal percentage
+- Wi-Fi link speed
+
+even while the Ethernet icon mode is active.
+
+The module already gathers Ethernet connection and speed evidence, but that evidence is not yet fully wired into a complete alternate Ethernet data view.
+
+Do not describe the current right-click mode as a finished Ethernet dashboard.
+
+## AppControl SYSTEM // network-interface control
+
+AppControl's SYSTEM monitor exposes the lower-level network interfaces as system components.
+
+For network interfaces, the current System Monitor can expose:
+
+```text
+DISCONNECT
+RECONNECT
+```
+
+when `nmcli` is available.
+
+Current implementation maps these to:
+
+```text
+DISCONNECT
+→ nmcli device disconnect <interface>
+
+RECONNECT
+→ nmcli device connect <interface>
+```
+
+The UI explicitly warns:
+
+```text
+⚠︎ DISCONNECT MAY DROP NETWORK
+```
+
+before presenting network control context.
+
+Therefore the current operator split is:
+
+```text
+Network dock
+→ quick live status
+→ open NetworkManager connection editor
+
+AppControl → SYSTEM → NETWORK
+→ interface telemetry
+→ disconnect / reconnect interface
+
+nmcli / iw / ethtool
+→ underlying primitives
+```
+
+For an ordinary "what is my connection doing?" question, prefer the visible Network / AppControl surfaces before raw commands.
+
+For exact diagnosis, the underlying commands remain appropriate.
+
+## Network telemetry in CPU++ / AppControl SYSTEM
+
+The shared System Telemetry stack also exposes network-interface activity.
+
+Current network records include:
+
+- interface identity
+- receive rate
+- transmit rate
+- operational state
+
+The shared telemetry currently notes an important limitation:
+
+> generic procfs does not reliably provide per-process network-byte accounting.
+
+Do not fabricate process-level network attribution from aggregate interface counters.
+
+## Network health rule
+
+Distinguish:
+
+```text
+Wi-Fi radio enabled
+Wi-Fi associated to a network
+link signal
+link speed
+Ethernet connected
+interface operational state
+actual Internet reachability
+```
+
+The current dock observes several of these, but it does **not** perform a general Internet-reachability test.
+
+A connected Wi-Fi / Ethernet interface is not by itself proof that the Internet or a particular remote service is reachable.
+
+Likewise, one failed remote service does not prove the local network interface is down.
+
+# BLUETOOTH
+
+The current Bluetooth module is an **unfinished visual surface**.
+
+Its current visible dock text is:
+
+```text
+(˓✟˒)
+```
+
+The module currently provides:
+
+- the DockButton shell
+- Bluetooth-themed icon artwork
+- normal / hover / pressed glow behavior
+
+It currently does **not** provide verified:
+
+- Bluetooth adapter discovery
+- adapter enabled / disabled state
+- connected-device state
+- pairing
+- connect / disconnect
+- device list
+- battery state
+- Bluetooth audio-route control
+- click behavior
+- right-click behavior
+- `bluetoothctl` integration
+- Blueman integration
+- a Quickshell Bluetooth service binding
+
+There are no click handlers or backend processes in the current `Bluetooth.qml`.
+
+Therefore:
+
+> **The presence or color of the current Bluetooth button is not Bluetooth runtime telemetry.**
+
+Do not interpret it as proof that Bluetooth is on, off, connected, disconnected, healthy, or unhealthy.
+
+Do not tell the user to click the current Bluetooth dock button to pair or manage a device.
+
+## Bluetooth guidance rule
+
+Until a real Bluetooth backend/control surface is implemented:
+
+1. describe the current dock as a visual placeholder;
+2. do not infer Bluetooth state from it;
+3. inspect the actual system Bluetooth state when diagnosis is requested;
+4. use the underlying system tool only when needed;
+5. re-check current implementation before giving future UI instructions, because this placeholder is an obvious active expansion seam.
+
+## Connectivity ownership map
+
+Use:
+
+```text
+NETWORK DOCK
+live Wi-Fi-oriented status + NetworkManager editor launch
+
+APPCONTROL SYSTEM
+network-interface telemetry + disconnect / reconnect
+
+NETWORKMANAGER
+connection profiles / interface management
+
+KERNEL / DRIVER / IW / ETHTOOL
+link / device evidence
+
+BLUETOOTH DOCK
+current visual placeholder only
+```
+
+Do not merge NetworkManager and Bluetooth into one generic "wireless" subsystem merely because both live in the same taskbar cluster.
+
 # CPU++
 
 **Implementation owner:** [The Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project)
@@ -2806,6 +3126,7 @@ Verified implementation facts in the current version were drawn from:
 - Post-Apollo Oh My Apollo
 - Post-Apollo Astro Snacks
 - The Post-Apollo Project media / audio services and Hi-Fi prototype
+- The Post-Apollo Project Network / Bluetooth modules and shared System Telemetry
 
 Technical behavior remains canonical in the repository that owns it.
 
