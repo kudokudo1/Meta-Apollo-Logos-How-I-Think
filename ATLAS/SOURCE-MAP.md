@@ -10,6 +10,8 @@ This map records where the current human/AI working interface comes from.
 
 The goal is **centralized entry, not duplicated truth**.
 
+**Hospital staff organization / cleanup recruitment:** [OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md](../OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md) is the review-candidate staff grammar for the one-PXD / one-Hospital-wide-head-nurse model, Nurses, Interns, Patient-level leads, and short completion checkpoints. This specializes the already-promoted Hospital Agent and Report Protocols; technical and live Hospital state remain canonical in their owning systems.
+
 How I Think is the front door. Technical or project-specific facts remain canonical in the repository that owns them.
 
 ## LEGEND
