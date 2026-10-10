@@ -238,6 +238,16 @@ NEXT // <justified continuation>
 
 A Team label such as `T3-F`, chat title such as `Greeting Exchange`, or staff label such as `Nurse 3` is not by itself a unique persistent Room/session identity. Bind a real reference before claiming a chat or worker is connected.
 
+### 8.1 // SEMANTIC IDENTIFIERS AND SELECTIVE DECOMPRESSION
+
+Staff names, suffixes, and Team labels may be **compressed relational addresses**, not abbreviations with exactly one expansion. An identifier can preserve several operator-established meanings at once: its original context, present purpose, history, and relationships to other work. Later meanings can accumulate without erasing earlier ones.
+
+For example, `Head Nurse .C` carries **Context** (original domain), **Cleanup** (present context-cleanup work), and the connection to the original `C2` / `C4` work family. This is a *local*, layered meaning—not a universal rule that `.C` must mean the same thing everywhere.
+
+Keep the identifier compact until its relationships matter. Decompress only enough to interpret an assignment, resolve ambiguity, or preserve provenance. Record confirmed meanings and distinguish them from plausible inference; do not invent expansions or force identical suffixes to have identical meanings across unrelated work. A semantic address never replaces a unique Room/session reference, a scoped Assignment, or explicit permission.
+
+**Model reference:** [How I Think — Generative Strings, Semantic Compression Integrity, and Return Pointers / Semantic Addresses](../HOW-I-THINK-PUBLIC.md#9-generative-strings).
+
 This packet is a **pointer for reconstructing context**, not a compressed replacement for evidence that has not been inspected.
 
 ## 9 // SCOPE, COMPATIBILITY, AND SOURCE
