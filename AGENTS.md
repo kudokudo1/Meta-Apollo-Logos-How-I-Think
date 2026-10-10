@@ -133,6 +133,7 @@ Start with:
 - [OPERATE/CONTROL-SURFACES.md](./OPERATE/CONTROL-SURFACES.md) — UI-first operator routes and control-plane map
 - [OPERATE/DESKTOP-LIFECYCLE.md](./OPERATE/DESKTOP-LIFECYCLE.md) — startup ownership, layered health, live-vs-source state, and restart boundaries
 - [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](./OPERATE/HOSPITAL-AGENT-PROTOCOL.md) — Hospital-compatible doctor / room / patient / assignment behavior
+- [OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md](./OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md) — staff hierarchy, Proxy Doctor, Nurse / Intern boundaries, recruitment and micro-checkpoints
 - [OPERATE/HOSPITAL-REPORT-PROTOCOL.md](./OPERATE/HOSPITAL-REPORT-PROTOCOL.md) — report timing, schema, evidence, completion, and handoff behavior
 - [ATLAS/SOURCE-MAP.md](./ATLAS/SOURCE-MAP.md) — where these rules came from and which external sources remain canonical
 - [dump/](./dump/) — preserved archaeology when the compressed layer is not enough
