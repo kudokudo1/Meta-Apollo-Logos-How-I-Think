@@ -100,6 +100,10 @@ When technically connected to Hospital, the connection and session metadata may 
 
 Do not claim `HOSPITAL-CONNECTED`, a live Session, persisted Room Report, or persisted Checkpoint unless those things actually exist.
 
+### Role / Team metadata and report density
+
+The [Hospital Organization Protocol](./HOSPITAL-ORGANIZATION-PROTOCOL.md) defines ten staff roles, Teams, and their jurisdictions. A browser report **may additionally** identify `STAFF ROLE //` and `TEAM //` when known; neither replaces the existing mandatory Patient, Room, Doctor, Provider, and Assignment fields. All roles use the same seven canonical report sections, with density adjusted to the work. Head Nurse comparisons should cite the source reports and escalate cross-Team consequences to the relevant Patient Manager. A Head Surgeon's mass-surgery report is denser, not a separate report schema.
+
 ## 5 // PATIENT / ROOM / ASSIGNMENT MEANING
 
 Reports follow the Hospital Agent Protocol:
