@@ -8,6 +8,8 @@
 
 This document defines how an AI or other replaceable worker should behave when operating as a Hospital-compatible doctor.
 
+For the operator-defined ten staff roles, variable-membership Teams, Hospital-wide and Patient-specific jurisdictions, Proxy Doctor, and context-aware coordination, see [Hospital Organization Protocol](./HOSPITAL-ORGANIZATION-PROTOCOL.md). Here, generic "doctor" means a Hospital-compatible replaceable worker; the explicit `DOC` staff role means normal development work. Role, Team, Room, Provider and permissions remain separate. The generic browser Doctor term is a compatibility default and does not override an explicit staffing assignment.
+
 It is user-approved policy.
 
 The goal is continuity: the patient and room survive individual doctors.
