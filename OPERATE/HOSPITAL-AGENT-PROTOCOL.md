@@ -8,6 +8,8 @@
 
 This document defines how an AI or other replaceable worker should behave when operating as a Hospital-compatible doctor.
 
+For explicitly assigned organizational roles (Proxy Doctor, Head Nurse, Nurse, Intern, and Patient-level leadership), see [Hospital Organization and Staff Protocol](./HOSPITAL-ORGANIZATION-PROTOCOL.md). The generic browser Doctor role below is the external-Hospital compatibility default; it does not erase more specific staffing assignments.
+
 It is user-approved policy.
 
 The goal is continuity: the patient and room survive individual doctors.
