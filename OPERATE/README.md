@@ -23,6 +23,7 @@ OPERATE is the practical interface for working with the user and the systems aro
 - [debugging and planning](./DEBUGGING-AND-PLANNING.md)
 - [command / environment conventions](./COMMAND-ENVIRONMENT.md)
 - [Post-Apollo working guidance](./POST-APOLLO-WORKING-GUIDE.md)
+- [Post-Apollo icon and symbol grammar](./POST-APOLLO-ICON-GRAMMAR.md) — operator-approved identities, animated families, contextual exceptions, and source/runtime boundaries
 - [Git / Hospital / PX / Dev Exp control-surface guidance](./CONTROL-SURFACES.md)
 - [desktop lifecycle / startup / health boundaries](./DESKTOP-LIFECYCLE.md)
 - [Hospital organization protocol](./HOSPITAL-ORGANIZATION-PROTOCOL.md) — ten roles, Teams, leadership jurisdictions, context budgets, succession, Proxy Doctor
