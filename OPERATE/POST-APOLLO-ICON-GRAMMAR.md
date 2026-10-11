@@ -109,8 +109,9 @@ Windows → Tabs selector is exactly `♤ ⚄` (literal space separating symbols
 | --- | --- | --- | --- |
 | Favorites | `(˵✧ᴗ✧˵)` | Blink `(˵-ᴗ-˵)` | Hover/click `(˶ˆᗜˆ˵)` |
 | Kitty | `≽(^•⩊•^)≼` | Blink `≽(^-⩊-^)≼` | Hover/click `≽(^≧⩊≦^)≼` |
-| Hidden | `|ω-ς)` | Blink/hover/selected `|ω･`ς)` | Pressed styling exists; a third face **not verified** |
 | Kill / Hunter compact | `(-_•)デ╾━` | Thumbs up `ദ്ദി(-_•)デ╾━` | Fire `(=ᗜ=)デ╾━ ๋࣭⭑` |
+
+**Hidden (separate contextual face):** Default `|ω-ς)`; blink/hover/selected ``|ω･`ς)``. Pressed styling exists, but a third distinct face glyph has **not** been verified.
 
 Favorites, Kitty, and Hidden have appropriate blink/attention behavior. **Kill/Hunter does not have an automatic face-blink cycle.** Do not add one to achieve apparent uniformity.
 
