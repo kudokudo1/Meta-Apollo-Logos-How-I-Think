@@ -39,7 +39,7 @@ Source text is not a visual proof. GohuFont, NotoText, fallback fonts, zero-widt
 | Files | `🗄` | Intentionally reused for GitHub Library |
 | RUN / command | `⌯✎﹏﹏` | RUN action may add `RUN COMMAND` |
 | Windows | `🃁🂡🂱🃑` | Windows → Tabs selector separately `♤ ⚄` |
-| Remote / SSH | `⌁⋆˚☾⭒` | Selected replacement; old `⌁ ssh` remains in some QML until implemented |
+| Remote / SSH | `⌁⋆˚☾⭒` | Full icon for REMOTE main, Config selector, selected detail identity, and Connect action; preserve `⌁` only for the unavailable-tab fallback |
 | Thermal | `₊˚⊹🌡 ๋࣭⭑` | Compact `🌡` retained; Weather may reuse `🌡` |
 | Process / main Kill | `(-_•)︻デ═一` | Long gun; three reactive stages required |
 | System | `🖳` | AppControl / CPU++ |
@@ -78,7 +78,7 @@ The following are **operator-chosen target identities, not proof of implementati
 | GitHub Issues | `⭒˗ˏˋ๋࣭⚠︎๋࣭⭑ˊ˗` | `!` |
 | AppControl SSH / Remote | `⌁⋆˚☾⭒` | `⌁ ssh` |
 
-The eight visible tildes in the recorded PR design are the preserved decision-register transcription; verify the final font rendering and operator's intended width before implementation. Compact Remote detail `⌁` is a known, **unresolved contextual variant**: do not expand or delete it without operator review.
+The eight visible tildes in the recorded PR design are the preserved decision-register transcription; verify the final font rendering and operator's intended width before implementation. **Operator clarification (2026-10-11):** All four SSH-specific placements use the **full** `⌁⋆˚☾⭒`: main REMOTE icon, `⌁⋆˚☾⭒ CONFIG` selector, selected Remote detail artwork, and CONNECT action. Retain exactly `⌁` for the **unavailable-tab fallback**, which is not an SSH control. Leave distinct Remote actions such as SFTP/Copy SSH Command unchanged. [Post-Apollo PR #181](https://github.com/kudokudo1/The-Post-Apollo-Project/pull/181) proposes the QML migration; source and runtime acceptance remain separate.
 
 ## 4 // APPCONTROL CONTEXTUAL ACTION RECIPES
 
