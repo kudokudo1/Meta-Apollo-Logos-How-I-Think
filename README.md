@@ -12,7 +12,7 @@ A living map of the relationship between an artist and the models he uses to und
 
 **FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [POST-APOLLO PROJECT](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
-**RULES // SYNTAGMA (current How-I-Think)** [Agent/operator entry](./AGENTS.md) · [Authority/source map](./ATLAS/SOURCE-MAP.md) · [Visual and icon grammar](./OPERATE/POST-APOLLO-ICON-GRAMMAR.md) · [Family design grammar](https://github.com/kudokudo1/Meta-Apollo-Logos/blob/main/MODEL/Repo-Design-Language.md)
+**SHARED RULES //** [Syntagma agent entry](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/AGENTS.md) · [Authority/source map](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/ATLAS/SOURCE-MAP.md) · [Visual and icon grammar](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-ICON-GRAMMAR.md) · [Family design grammar](https://github.com/kudokudo1/Meta-Apollo-Logos/blob/main/MODEL/Repo-Design-Language.md)
 
 ### 🧭 MAP // REPOSITORY
 
@@ -26,14 +26,14 @@ A living map of the relationship between an artist and the models he uses to und
 
 The existing public model and `dump/` archaeology remain in place.
 
-This repository now also serves as the **central operator interface** for working with the user: humans can understand the model, AI agents can load practical collaboration rules, and either can descend into evidence / archaeology only when the compressed layer is insufficient.
+This repository is the **personal How I Think / Poioumenon model and evidence interface**. The shared agent/operator contract has a [dedicated canonical home in Syntagma](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma). The previous OPERATE rule copies remain readable for migration provenance and existing links, not as independent governing editions.
 
 ### ⌯✦ START // PICK THE PATH YOU NEED
 
 | NEED | START HERE |
 |---|---|
 | Understand how I think / communicate | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) |
-| Enter as an AI / agent | [AGENTS.md](./AGENTS.md) |
+| Enter as an AI / agent | [Syntagma AGENTS](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/AGENTS.md) |
 | See practical working guidance | [OPERATE](./OPERATE/) |
 | See where the rules came from | [ATLAS // SOURCE MAP](./ATLAS/SOURCE-MAP.md) |
 | Inspect deep history / provenance | [dump/](./dump/) |
@@ -60,7 +60,7 @@ The public document is the current forward-facing map: organized by function, co
 
 | Layer | Question | Location | Status |
 | --- | --- | --- | --- |
-| **00 · Interface** | *How should a human or AI enter and work with this system?* | [AGENTS.md](./AGENTS.md) + [OPERATE](./OPERATE/) | **Live / expanding** |
+| **00 · Shared rules** | *How should a human or AI work with the operator?* | [Syntagma AGENTS](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/AGENTS.md) and [OPERATE](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/README.md) | **Canonical elsewhere** |
 | **01 · Map** | *What does the model currently say?* | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) | **Live** |
 | **02 · Evidence** | *Why should I believe this claim?* | Curated from the archive | **In progress** |
 | **03 · Archaeology** | *How did this model develop?* | [`dump/`](./dump/) | **Preserved** |
