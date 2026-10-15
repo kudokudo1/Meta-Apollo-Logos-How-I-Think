@@ -51,6 +51,14 @@ The rule is:
 
 > **Look first. Reuse when the relationship is actually the same.**
 
+### Component and widget construction classification
+
+Before creating or rebuilding a module, widget, menu or control, identify the **domain relationship it owns** and its whole/subsystem/action scope; dock purpose; existing QML component family; semantic foreground/fill/border/glow identities; numerical versus categorical states; opening/focus behaviors; geometry, neighbors and coexistence; and known verified exceptions.
+
+Choose existing **DockButton, ActionButton, ModeButton, SelectorDial, SelectorSlider, IndexRail, NeonScrollBar, WindowPanelFrame, SurfaceFrame, SectionFrame**, text/glow helpers and current components *where the relationship fits*. Do not duplicate older rectangle/MouseArea/shadow recipes merely because a historical generic menu template shows them. Reuse does not justify losing specialty artwork, independent glow planes, animation or input behavior.
+
+Consult the [Post-Apollo visual/icon grammar](./POST-APOLLO-ICON-GRAMMAR.md) and [dock/widget composition](./CONTROL-SURFACES.md#post-apollo--dock-and-widget-composition) **before asking the operator to decide an established rule again**. Inspect the live implementation, component-specific API, runtime history and any owner exceptions; do not invent new policy from a component name or a parent color.
+
 ## 3 // SCOPE EXPANSION MUST BE REPORTED
 
 If a requested local fix exposes a broader problem in:
@@ -188,6 +196,16 @@ For an enduring rule, technical contract or operational report, make it easy to 
 For a new rule or relocation, workers should report a small structured packet: `RULE / OWNER / DESTINATION / STATUS / SOURCE / RELATION TO EXISTING / VERIFICATION`. Preserve the operator's original meaning and justified exceptions. Active PRs, branch ownership and concurrent work remain protected. Draft documentation may be submitted for review without independently authorizing implementation or a merge.
 
 **Discoverability:** an AI entering any member repository should be directed from an established entry point to the umbrella design grammar, Syntagma's agent/rules entry, and relevant local contracts. Link, don't clone. Follow the confirmed migration map; **Syntagma** and **Poioumenon** intentionally overlap during the current naming/content split. Do not rename or relocate either project based only on these future-facing labels.
+
+### Domain ownership and reconstruction
+
+Sharing a time, provider, data value, icon or color does not make two interfaces owners of the same domain. **Clock** measures/manipulates time and durations; **Calendar** organizes dates and periods; **Planner** owns human intentions, events and commitments attached to dates and times. A scheduled appointment at 9:45 does not redefine 9:45. Domains can exchange data and controls without collapsing into one menu.
+
+Similarly, **Music/Media** does not own the whole audio system, and AppControl, CPU++ and Media can share diagnostic information without losing their separate responsibilities. Module permanence can be justified by useful universal glance data, operator agency, domain breadth or consolidated meaningful power—not by arbitrary feature accumulation.
+
+For faithful reconstruction, record both the shared grammar and the component's **individual identity**: domain, artwork, outer geometry, anchor, neighbors, color range and independent visual-state layers, selected reusable parts, source/service dependencies, opening strategy, simultaneous-use pairs and exceptions. A plausible family-looking substitute is not a full replacement for those specifics. Evaluate actual rendering, interaction safety, functional behavior and remaining operator questions; do not treat text/static checks as final live verification.
+
+Retrieve existing settled decisions instead of re-eliciting them. Keep **accepted rule**, **contextual exception**, **proposed**, **deferred**, and **observed implementation** distinct. Source drift becomes reconciliation work, not authorization for unrequested global standardization. Network/Wi-Fi red error treatment remains deferred pending domain review.
 
 ## 9 // TECHNICAL FACTS REMAIN OWNED BY THEIR SYSTEMS
 
