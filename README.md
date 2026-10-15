@@ -12,6 +12,8 @@ A living map of the relationship between an artist and the models he uses to und
 
 **FAMILY //** [META APOLLO LOGOS](https://github.com/kudokudo1/Meta-Apollo-Logos) · [DEV EXP](https://github.com/kudokudo1/The-Post-Apollo-Dev-Exp) · [FOREST](https://github.com/kudokudo1/The-Post-Apollo-Forest-Project) · [POST-APOLLO PROJECT](https://github.com/kudokudo1/The-Post-Apollo-Project)
 
+**RULES // SYNTAGMA (current How-I-Think)** [Agent/operator entry](./AGENTS.md) · [Authority/source map](./ATLAS/SOURCE-MAP.md) · [Visual and icon grammar](./OPERATE/POST-APOLLO-ICON-GRAMMAR.md) · [Family design grammar](https://github.com/kudokudo1/Meta-Apollo-Logos/blob/main/MODEL/Repo-Design-Language.md)
+
 ### 🧭 MAP // REPOSITORY
 
 ![](BUILD/assets/design/chassis/nav-rail.svg)
