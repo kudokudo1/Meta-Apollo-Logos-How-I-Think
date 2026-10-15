@@ -148,6 +148,8 @@ Current reusable component vocabulary includes:
 - `Colors`
 - button and menu templates
 
+**Current-facing visual/interaction rules HERE:** [icon, relational color and range grammar](../OPERATE/POST-APOLLO-ICON-GRAMMAR.md#8--color-and-interaction-are-independent-axes); [dock placement, widget geometry, coexistence and stacking](../OPERATE/CONTROL-SURFACES.md#post-apollo--dock-and-widget-composition); [component selection, domain ownership and faithful reconstruction](../OPERATE/POST-APOLLO-WORKING-GUIDE.md#2--reuse-before-invention). These are operator-intended rules and construction guidance, **not** an assertion of completed QML implementation or runtime certification.
+
 **Rule derived:** inspect and reuse existing Post-Apollo primitives before inventing a near-duplicate.
 
 **Status:** IMPLEMENTATION / CANONICAL ELSEWHERE.
