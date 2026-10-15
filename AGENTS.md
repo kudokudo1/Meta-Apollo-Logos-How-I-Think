@@ -4,9 +4,9 @@
 
 > **STATE //** active \~\~ **VIEW //** agent entry contract
 
-This file is the fast entry point for an AI or other agent working with the user, this repository, or the wider Meta Apollo // Post-Apollo family.
+This is a **legacy compatibility entry for the personal How I Think repository**. The canonical shared agent/operator rules now live in [Syntagma AGENTS](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/AGENTS.md). Use that live entry for cross-project permissions, reporting, Hospital roles and working procedures; this retained copy preserves historical links during the split. Personal thinking, first-person evidence, and archaeology remain here.
 
-It is intentionally compact. Deeper explanations live in the public model, OPERATE, EVIDENCE, and the preserved archive.
+If a rule below differs from current Syntagma, **the current Syntagma version governs**.
 
 ## AUTHORITY // FIRST RULE
 
@@ -122,27 +122,27 @@ Preserve provenance and important decision history.
 
 ## DOCUMENTATION AUTHORITY // CHECK BEFORE WRITING RULES
 
-The current repository is the **Syntagma** rules and AI/operator-interface workstream during its ongoing name migration. The separate author/evidence work is **Poioumenon (Ποιούμενον) / How I Think**; overlap during migration is intentional, not an invitation to delete or synchronize the two models blindly. Do not rename repositories, relocate author evidence, or silently promote a draft rule.
+The dedicated [Syntagma repository](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma) now owns shared rules. This repository remains **How I Think / Poioumenon** for the personal model, examples, and preserved evidence. Legacy rule copies under OPERATE are preserved for compatibility until a coordinated cleanup and are not separate canonical authorities. Do not delete personal history or synchronize it into Syntagma automatically.
 
-Before adding a rule to any Meta Apollo project: read the [authority and provenance map](./ATLAS/SOURCE-MAP.md) and the [documentation placement / classification workflow](./OPERATE/POST-APOLLO-WORKING-GUIDE.md#documentation-ownership--placement). Follow the canonical source; link instead of copying. Preserve the operator's informal input and organize it on their behalf. Check active ownership/PRs before moving any file.
+Before adding a rule to any Meta Apollo project: read the [authority and provenance map](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/ATLAS/SOURCE-MAP.md) and the [documentation placement / classification workflow](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-WORKING-GUIDE.md#documentation-ownership--placement). Follow the canonical source; link instead of copying. Preserve the operator's informal input and organize it on their behalf. Check active ownership/PRs before moving any file.
 
 ## DEEPER CONTEXT
 
 Start with:
 
 - [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) — current cognitive / communication map
-- [OPERATE/WORKING-WITH-ME.md](./OPERATE/WORKING-WITH-ME.md) — compact collaboration behavior
-- [OPERATE/AUTHORITY-AND-PERMISSIONS.md](./OPERATE/AUTHORITY-AND-PERMISSIONS.md) — actuation boundaries
-- [OPERATE/DEBUGGING-AND-PLANNING.md](./OPERATE/DEBUGGING-AND-PLANNING.md) — problem-solving protocol
-- [OPERATE/COMMAND-ENVIRONMENT.md](./OPERATE/COMMAND-ENVIRONMENT.md) — host / shell conventions
-- [OPERATE/POST-APOLLO-WORKING-GUIDE.md](./OPERATE/POST-APOLLO-WORKING-GUIDE.md) — approved Post-Apollo development policy
-- [OPERATE/POST-APOLLO-ICON-GRAMMAR.md](./OPERATE/POST-APOLLO-ICON-GRAMMAR.md) — operator-established glyph, relational color, range and independent glow grammar
-- [OPERATE/CONTROL-SURFACES.md](./OPERATE/CONTROL-SURFACES.md) — UI-first operator routes and control-plane map
-- [OPERATE/DESKTOP-LIFECYCLE.md](./OPERATE/DESKTOP-LIFECYCLE.md) — startup ownership, layered health, live-vs-source state, and restart boundaries
-- [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](./OPERATE/HOSPITAL-AGENT-PROTOCOL.md) — Hospital-compatible doctor / room / patient / assignment behavior
-- [OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md](./OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md) — ten staff roles, Patient-level leadership, Teams, Proxy Doctor, delegation, context and succession
-- [OPERATE/HOSPITAL-REPORT-PROTOCOL.md](./OPERATE/HOSPITAL-REPORT-PROTOCOL.md) — report timing, schema, evidence, completion, and handoff behavior
-- [ATLAS/SOURCE-MAP.md](./ATLAS/SOURCE-MAP.md) — where these rules came from and which external sources remain canonical
+- [OPERATE/WORKING-WITH-ME.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/WORKING-WITH-ME.md) — compact collaboration behavior
+- [OPERATE/AUTHORITY-AND-PERMISSIONS.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/AUTHORITY-AND-PERMISSIONS.md) — actuation boundaries
+- [OPERATE/DEBUGGING-AND-PLANNING.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/DEBUGGING-AND-PLANNING.md) — problem-solving protocol
+- [OPERATE/COMMAND-ENVIRONMENT.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/COMMAND-ENVIRONMENT.md) — host / shell conventions
+- [OPERATE/POST-APOLLO-WORKING-GUIDE.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-WORKING-GUIDE.md) — approved Post-Apollo development policy
+- [OPERATE/POST-APOLLO-ICON-GRAMMAR.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-ICON-GRAMMAR.md) — operator-established glyph, relational color, range and independent glow grammar
+- [OPERATE/CONTROL-SURFACES.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/CONTROL-SURFACES.md) — UI-first operator routes and control-plane map
+- [OPERATE/DESKTOP-LIFECYCLE.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/DESKTOP-LIFECYCLE.md) — startup ownership, layered health, live-vs-source state, and restart boundaries
+- [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-AGENT-PROTOCOL.md) — Hospital-compatible doctor / room / patient / assignment behavior
+- [OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md) — ten staff roles, Patient-level leadership, Teams, Proxy Doctor, delegation, context and succession
+- [OPERATE/HOSPITAL-REPORT-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-REPORT-PROTOCOL.md) — report timing, schema, evidence, completion, and handoff behavior
+- [ATLAS/SOURCE-MAP.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/ATLAS/SOURCE-MAP.md) — where these rules came from and which external sources remain canonical
 - [dump/](./dump/) — preserved archaeology when the compressed layer is not enough
 
 > **Use the skim layer first. Descend only when the task needs more context.**
