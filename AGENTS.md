@@ -136,6 +136,7 @@ Start with:
 - [OPERATE/DEBUGGING-AND-PLANNING.md](./OPERATE/DEBUGGING-AND-PLANNING.md) — problem-solving protocol
 - [OPERATE/COMMAND-ENVIRONMENT.md](./OPERATE/COMMAND-ENVIRONMENT.md) — host / shell conventions
 - [OPERATE/POST-APOLLO-WORKING-GUIDE.md](./OPERATE/POST-APOLLO-WORKING-GUIDE.md) — approved Post-Apollo development policy
+- [OPERATE/POST-APOLLO-ICON-GRAMMAR.md](./OPERATE/POST-APOLLO-ICON-GRAMMAR.md) — operator-established glyph, relational color, range and independent glow grammar
 - [OPERATE/CONTROL-SURFACES.md](./OPERATE/CONTROL-SURFACES.md) — UI-first operator routes and control-plane map
 - [OPERATE/DESKTOP-LIFECYCLE.md](./OPERATE/DESKTOP-LIFECYCLE.md) — startup ownership, layered health, live-vs-source state, and restart boundaries
 - [OPERATE/HOSPITAL-AGENT-PROTOCOL.md](./OPERATE/HOSPITAL-AGENT-PROTOCOL.md) — Hospital-compatible doctor / room / patient / assignment behavior
