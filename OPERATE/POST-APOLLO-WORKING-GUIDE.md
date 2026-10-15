@@ -165,6 +165,30 @@ This is not only PR ceremony.
 
 The amount of reporting may scale with the size of the change, but the conceptual check is part of normal development.
 
+## DOCUMENTATION OWNERSHIP & PLACEMENT
+
+Documentation is part of development, but the operator should be free to write raw notes, fragments and observations without performing clerical classification. An AI/worker must turn that material into a correctly owned and discoverable record, rather than demanding a perfect input format or creating another generic note pile.
+
+**First locate, then write:** search the existing Syntagma source map, parent Meta Apollo design grammar, local room maps, owning component/API contracts, and active work before making a new rule file. Prefer amending the smallest existing authoritative section. Reference a canonical statement instead of copying it into every repository.
+
+| Kind of material | Default location | Boundary |
+|---|---|---|
+| Universal family principles, repository and diagram design | Umbrella Meta Apollo `MODEL/` | Do not recopy as a project-local constitution |
+| Operator/AI collaboration, shared semantic interaction and visual rules | Syntagma `OPERATE/`; entry via `AGENTS.md` | Poioumenon contains substantive author/history/evidence, not a second rules authority |
+| Local architecture, APIs, component family, technical contract | Owning project's `MODEL/` or documented code-adjacent invariant | Must be indexed by `ATLAS/`/`MODEL/README.md` if maintained in an exception path |
+| Procedures, setup, runbooks, usage | Owning project's `OPERATE/` | Distinguish intended and tested paths |
+| Experiment, screenshot, benchmark, diagnosis, runtime acceptance | Owning project's `EVIDENCE/` | Never present a trial result as a universal rule |
+| Validators, fixtures and developer scripts | `DEV/` or required native test/build paths | Check grammar and links, not human aesthetic judgment |
+| Superseded/historical writing | `ARCHIVE/` or explicitly marked historical import | Do not promote an older snapshot over current authority |
+
+### Minimum documentation identity
+
+For an enduring rule, technical contract or operational report, make it easy to answer **what this is**, **who owns it**, **what it applies to**, **whether it is accepted/proposed/observed**, **what it supersedes or depends on**, and **how it was verified**. Use concise metadata or a short introduction according to document size; do not make every scratch note fill a rigid form.
+
+For a new rule or relocation, workers should report a small structured packet: `RULE / OWNER / DESTINATION / STATUS / SOURCE / RELATION TO EXISTING / VERIFICATION`. Preserve the operator's original meaning and justified exceptions. Active PRs, branch ownership and concurrent work remain protected. Draft documentation may be submitted for review without independently authorizing implementation or a merge.
+
+**Discoverability:** an AI entering any member repository should be directed from an established entry point to the umbrella design grammar, Syntagma's agent/rules entry, and relevant local contracts. Link, don't clone. Follow the confirmed migration map; **Syntagma** and **Poioumenon** intentionally overlap during the current naming/content split. Do not rename or relocate either project based only on these future-facing labels.
+
 ## 9 // TECHNICAL FACTS REMAIN OWNED BY THEIR SYSTEMS
 
 This working guide does not replace canonical project contracts.
