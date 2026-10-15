@@ -4,6 +4,8 @@
 
 ![](../BUILD/assets/design/chassis/focus-rail.svg)
 
+// [🧭 ATLAS](../ATLAS/) \~\~ // [✮˙๋࣭⭑ MODEL](../MODEL/) \~\~ // [🖨 BUILD](../BUILD/) \~\~ // [⚒ DEV](../DEV/) \~\~ // **[🖳 OPERATE](../OPERATE/)** \~\~ // [⊹ ࣪ℼ˖ EVIDENCE](../EVIDENCE/) \~\~ // [࣪⋅˚🕮‧₊˚ ARCHIVE](../ARCHIVE/)
+
 > **STATE //** compatibility map · **CURRENT SHARED RULES //** Syntagma
 
 This older How I Think OPERATE room preserves incoming links but no longer owns shared AI collaboration, Hospital, visual or runtime working rules. Start with [Syntagma's current OPERATE map](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/README.md).
