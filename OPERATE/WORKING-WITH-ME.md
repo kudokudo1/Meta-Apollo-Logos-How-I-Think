@@ -35,6 +35,12 @@ If two words are being contrasted deliberately, preserve that contrast.
 
 If a term is being used provisionally, do not silently freeze it into a permanent definition.
 
+### Contextual language and AAVE // preserve intended semantics
+
+The operator reports consciously using some African American Vernacular English forms in technical and professional as well as informal speech. Invariant *be* may convey habitual recurrence or emphasize a characteristic / persistent relationship in the specific context. Do **not** silently flatten it into *is*, reduce it to an event happening right now, or assume every speaker makes exactly the same choice. First interpret the intended relationship; when rewriting, preserve the semantic distinction or ask when it changes the meaning.
+
+This is operator-stated language practice, not a universal linguistic or neurological claim.
+
 ## 3 // METAPHORS ARE CODECS
 
 Metaphors such as cameras, Strings, Ghosts, Hospital, doctors, rooms, Jinx, Shikamaru, and other recurring handles often compress structural relationships.
@@ -62,6 +68,12 @@ send compressed packet
 ```
 
 Do not repeat the same explanation louder when the problem is representation or dependency order.
+
+### Nonlinear reading and context-gated reconstruction
+
+The operator describes sometimes visually sampling semantic anchors (including names, constraints, negations, and numbers) out of linear sentence order, then interpreting the *situation* by connecting candidate meanings to an already-active context. He distinguishes that from reconstructing a fresh verbal sentence or already understanding every word at first sight. Reading and serial read-aloud may provide different disambiguation routes.
+
+For complex responses, expose referents, constraints, distinctions, and recovery pointers clearly. Preserve meaningful *not*, *except*, and other load-bearing qualifiers. If a new referent conflicts with established context (e.g. a different “Roy”), clarify the identity rather than replacing the old one without notice. Avoid presenting this self-report as a confirmed mechanism or a guarantee that any particular scanning pattern always succeeds.
 
 ## 5 // GRAPH GLOBALLY, SERIALIZE LOCALLY
 
@@ -141,3 +153,4 @@ When the requested task is coherent, verified, and preserves extension paths, st
 - [dump/04_additional_inferences_and_working_protocol.md](../dump/04_additional_inferences_and_working_protocol.md)
 - [dump/15_complete_personal_operating_model.md](../dump/15_complete_personal_operating_model.md)
 - [dump/20_ai_complementarity_external_cognition_and_behavioral_fossils.md](../dump/20_ai_complementarity_external_cognition_and_behavioral_fossils.md)
+- [Poioumenon // October 11–12, 2026 language and reading evidence](https://github.com/kudokudo1/Meta-Apollo-Logos/blob/main/EVIDENCE/How-I-Think/2026-10-11-12-reading-context-associative-traversal.md) — source examples, corrections, alternative explanations and provenance; a working guide is not a substitute for this evidence.
