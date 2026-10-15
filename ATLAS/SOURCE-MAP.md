@@ -220,7 +220,29 @@ These were made explicit during current work and should be promoted into durable
 
 **Status:** PROMOTED for the current operator layer. Local-machine authority, Post-Apollo working behavior, control-surface policy, Hospital-compatible browser-agent behavior, and Hospital report / handoff behavior are current-facing.
 
-## 10 // CENTRALIZATION RULE
+## 10 // SYNTAGMA / POIOUMENON MIGRATION & DOCUMENT AUTHORITY
+
+**Migration stage, October 2026 — intentional overlap, not duplicate error.** The existing standalone `Meta-Apollo-Logos-How-I-Think` repository currently holds the practical rules/agent interface that is becoming **Meta Apollo Logos // Syntagma (Σύνταγμα)**. The author-centered **Poioumenon (Ποιούμενον) / How I Think** retains the thinking, creative process, stories, history, and substantial evidence. Some author and rules material still appears in both places while content is reassigned. No repository rename, historical deletion, or evidence migration is authorized merely by this description.
+
+**Authority routing:**
+
+| Question | Canonical owner / destination |
+|---|---|
+| Family-wide principles and repository/diagram grammar | [Meta Apollo Logos](https://github.com/kudokudo1/Meta-Apollo-Logos), particularly `MODEL/` |
+| How agents should work with the operator; shared practical rules; Post-Apollo semantic interface guidance | This Syntagma workstream, particularly `AGENTS.md` and `OPERATE/` |
+| Who made the system, why, personal history, long-form thinking, narratives and supporting proof | Poioumenon / author-facing How I Think, under migration; preserve existing sources and provenance |
+| Detailed technical contracts and executable invariants | Owning project: `MODEL/`, source/component contracts, and explicit references from local `ATLAS/` |
+| Operational recipes and operator-facing project routes | Owning project: `OPERATE/` |
+| Runtime observations, test results and experiments | Owning project: `EVIDENCE/` (tests and tooling remain in `DEV/` or native tooling locations) |
+| Historical or superseded material | `ARCHIVE/` or specifically identified historical imports |
+
+**One canonical authority per claim, with discoverable references.** An agent should locate the existing rule before proposing a new document; use a link or small local adapter when the canonical rule lives in another repository. Never infer that same-topic passages are exact duplicates without comparing their purpose, authority, revision, and migration state.
+
+### Rule placement and promotion discipline
+
+A quick operator note, chat decision, source comment, experimental observation, and accepted canonical rule are different statuses. Workers may collect them in their natural forms, but must classify and integrate them into the existing owned sections when appropriate. **The operator is not required to preformat notes to satisfy the documentation system.** New rules and relocations need identified ownership, scope, provenance, impact and verification status. Distinguish source approval from runtime acceptance. Do not bulk-migrate or overwrite active worker files merely to make the tree look tidy.
+
+## 11 // CENTRALIZATION RULE
 
 The relationship between repositories should be:
 
