@@ -6,7 +6,7 @@
 
 > **STATE //** operator-reviewed / living ~ **VIEW //** icon semantics, construction, interaction and provenance
 
-This is the operator-approved **symbol-language contract** for Post-Apollo. It is a permanent external reference for humans and agents, written in the same **semantic recipes / exceptions / rollout boundaries** spirit as the [Post-Apollo color and visual-language recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/docs/visual-language-recipes.md).
+This is the operator-approved **symbol-language contract** for Post-Apollo. It is a permanent external reference for humans and agents, written in the same **semantic recipes / exceptions / rollout boundaries** spirit as the [Post-Apollo color and visual-language recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/MODEL/components/visual-language-recipes.md).
 
 **Authority split:** The operator owns meaning and exceptions. This document owns the *record of those decisions*. The [Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project) owns QML implementation and actual runtime behavior. Do not infer that a selected glyph is already in production, that the text below overrides a live font/layout, or that this documentation authorizes a mass migration.
 
@@ -153,7 +153,7 @@ A non-clickable **running-hunt status title** remains a separate pending design 
 
 ## 8 // COLOR AND INTERACTION ARE INDEPENDENT AXES
 
-This contract supplements—does not replace—the operator's [color-family recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/docs/visual-language-recipes.md). Specialized icon/glow identity can remain stable through interaction while a yellow selected fill or red destructive treatment communicates state. Do not convert every selected character to orange or homogenize deliberate magenta/green/cyan contrast.
+This contract supplements—does not replace—the operator's [color-family recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/MODEL/components/visual-language-recipes.md). Specialized icon/glow identity can remain stable through interaction while a yellow selected fill or red destructive treatment communicates state. Do not convert every selected character to orange or homogenize deliberate magenta/green/cyan contrast.
 
 Preserve front/back glow order, separate text shadows, font-size differences, transparent positioning and stage-specific color treatment. If the glyph appears wrong, test the rendering instead of assuming its Unicode or decoration was mistaken.
 
@@ -220,7 +220,7 @@ Semantically plausible recoloring or relocation may still break layout, glow den
 ## SOURCE AND RELATED CONTRACTS
 
 - [Post-Apollo Project](https://github.com/kudokudo1/The-Post-Apollo-Project): implementation/source truth (especially `widgets/AppControlW.qml`, `widgets/appcontrol/HunterControls.qml`, `widgets/appcontrol/DestructiveConfirmOverlay.qml`, `widgets/CpuPlusW.qml`, `modules/Mediaplayer.qml`, `modules/Volumebar.qml`, `modules/Network.qml`).
-- [Visual-language recipes and green-family roles](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/docs/visual-language-recipes.md): sibling semantic color contract.
+- [Visual-language recipes and green-family roles](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/MODEL/components/visual-language-recipes.md): implementation-specific effect and component recipes; shared operator color semantics remain governed here.
 - [OPERATE // Post-Apollo Working Guide](./POST-APOLLO-WORKING-GUIDE.md): ownership, authority, testing and human acceptance.
 - [OPERATE // Hospital Report Protocol](./HOSPITAL-REPORT-PROTOCOL.md): report boundaries and external handoffs.
 
