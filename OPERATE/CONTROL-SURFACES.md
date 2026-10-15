@@ -111,6 +111,44 @@ Start from the highest existing operator surface that fits the task.
 
 Descend when the task requires more direct control or explanation.
 
+# POST-APOLLO // DOCK AND WIDGET COMPOSITION
+
+**Status:** Operator-established design targets, not a claim that all current QML complies. Exact source, measured compositor gaps and runtime behavior remain owned by Post-Apollo, Sway configuration and their technical contracts. This describes relationships rather than a complete coordinate grid or global z-rank.
+
+## Semantic zones, anchors and adjacency
+
+The **left** emphasizes agency and action (AppControl, workspaces, tray/current apps, media, Hospital and Git). The **center** is the developing personal/organizational home for calendar, notes, planning, schedules and appropriate AI utilities. The **right** emphasizes incoming information and observation (connectivity, CPU++, outdoor/weather, volume, clock, social and notifications). These are dominant relationships, not prohibitions against interactive controls on the information side.
+
+AppControl is the primary top-left anchor and Notifications the primary top-right anchor. Power occupies an intentionally isolated bottom-right position, in part to avoid accidental use. Other modules form contextual adjacency chains of different strengths:
+
+- **Strong semantic:** Git ↔ Hospital; Workspaces ↔ Tray; Wi-Fi ↔ Bluetooth.
+- **Visual/compositional:** Social's narrow green-family position bridges cyan-related neighbors; Clock, Social and Notifications also interact through information priority and fit. Consider variable right-side telemetry colors rather than a static screenshot.
+- **Historical/retained:** CPU++ ↔ Weather originated in CPU readings/temperature; Weather became the wider Outdoor/world station. Its orange color, size and position still contribute to the arrangement.
+
+Placement balances semantic zoning, anchors, neighbor relationships, screen fit, visual weight, changing colors, glow, historical precedent and safe isolation. Some relations are requirements; others are preferences. Neither sibling color uniqueness nor parent-to-child color inheritance is a universal rule. Report genuine conflicts rather than arbitrarily sacrificing one constraint.
+
+## Module geometry and widget geometry
+
+A dock **module/button** and its associated **widget/window** are independent geometries. The current standard module **visual height is exactly 50px**, while widths follow displayed artwork/data, necessary padding and cluster fit. Width can vary with live text. Do not enlarge a module merely because its associated widget is complex; fix excess empty space or misplaced content locally where possible.
+
+Widgets should occupy **only the usable space required** for readable, operable intended content. Once an outer widget size is established, changing its internal tabs, modes, pages or selections does **not ordinarily resize the outer shell**. Use existing scrolling/navigation contracts within that stable chassis. A different outer size requires an explicit, well-justified exception. Complexity and depth of widget functionality do not scale its dock-button size.
+
+Future per-monitor adaptation must use actual monitor/work-area geometry without page-dependent jumping, preserve readable controls and existing relationships, and does not automatically revoke the current 50px baseline. No universal numeric scaling or breakpoint table is established here.
+
+## Attachment, simultaneous visibility and stacking
+
+Place widgets near their owning module/dock region and usable desktop/window-work-area edges, respecting configured Sway gaps, reserved bar area, monitor differences and room for normal app windows such as Kitty.
+
+Minimize screen occupation and unnecessary overlaps **through geometry first**. When overlap is intentional or unavoidable, judge whether relevant functionality is obscured, not merely the number of intersecting pixels. Protect meaningful simultaneous pairs: AppControl + CPU++ for process/thermal control; AppControl + Media for audio diagnosis; Git + Hospital for coordinated development. Unrelated combinations can have lower coexistence priority without being forbidden.
+
+Git and Hospital intentionally overlap and can obscure redundant controls provided the needed complementary ones remain accessible. Use **predictable purpose-based foreground priority**, not click-to-raise or keyboard-focus-to-raise. **AppControl should remain above other ordinary widget panels whenever open**; Git is intended above Hospital in their paired overlap. Other pairs do not automatically acquire invented rankings.
+
+Keyboard ownership, pointer focus, visual focus, window-opening lifecycle and native Wayland surface stacking are **distinct mechanisms**. Respect current runtime-tested exceptions: Git/Hospital's opt-in visibility-controlled remap trial crashed on repeated opens; it did not establish a universal unmap/remap policy.
+
+## Before changing placement
+
+Inspect existing zone, anchor, reason for location, neighboring color/size and glow relationships, historical contribution, possible live color states, screen work area, coexistence pairs and lifecycle exceptions. Identify gains and tradeoffs before changing one element in a larger chain.
+
 # GIT // GITHUB
 
 **Implementation owner:** [Taskbars // Post-Apollo](https://github.com/kudokudo1/The-Post-Apollo-Project)

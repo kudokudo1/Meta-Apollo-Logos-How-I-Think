@@ -157,6 +157,57 @@ This contract supplements—does not replace—the operator's [color-family reci
 
 Preserve front/back glow order, separate text shadows, font-size differences, transparent positioning and stage-specific color treatment. If the glyph appears wrong, test the rendering instead of assuming its Unicode or decoration was mistaken.
 
+### 8.1 // RELATIONAL COLOR CLASSIFICATION
+
+Color identifies a **relationship in context**, not a fixed noun, selector depth, or obligation that adjacent buttons differ. First classify the referent, scope (whole, subsystem, action, display), emphasized relationship, persistence through interaction, and established precedent. Related terms need not share colors; different controls expressing the same relationship may share them.
+
+- **Relational equivalence:** siblings need not use unique colors. No one-color-per-button, one-color-per-section, or required alternation.
+- **Container independence:** a heading's color is context, not automatic inheritance. In AppControl, destructive Killing Actions may be red while Limit is yellow, Freeze cyan, and Kill red; multiple actions elsewhere may legitimately share cyan or orange.
+- **Layer independence:** icon/text foreground, fill, border, sampled content glow, chassis/perimeter glow, punctuation and keyboard/selection emphasis can carry distinct but compatible meanings. Changing one state does not mandate recoloring every layer.
+- **Identity and state:** persistent specialized identity can survive selection or hover alongside a contrasting yellow selected fill or magenta glow. Existing documented open-state precedence remains valid; this does not repeal DockButton's open-magenta treatment or intentional layer order.
+
+These are **relational defaults**, not exclusive assignments of nouns to hex values:
+
+| Color family | Typical relational role; always qualify by context |
+| --- | --- |
+| White/off-white | broad undifferentiated whole, neutral/default information, universal glanceable utility, or whole-system entry |
+| Cyan | ordinary observation/presence, signals, connection/data exchange, passive information and common baseline |
+| Blue | related cyan-family distinction when scope, density, or composition calls for a secondary role |
+| Orange/Yellow | agency family: active operation, energy/heat, user intervention; yellow may express limiting, secondary or adjacent agency |
+| Omnitrix/sub-Omnitrix green | systems, audio/screens, automation, AI and confirmation through existing specific family recipes; do not flatten layered green glows |
+| Magenta | focus, meaningful selection, expression, human/personal choice, or established specialized identity |
+| Red | destructive/critical action, danger, actual error, extreme telemetry or explicit high-consequence identity |
+| Dark/Black | related structural/chassis treatments, not competing foreground identities |
+
+Precedent and real-world associations matter. Kill's destructive red is not freely assignable to unrelated nearby actions. Thermal heat may be orange while Kill remains red. Domain growth, renaming and icon changes do not automatically erase persistent identity.
+
+**Cross-layer example:** audio subsystem controls may use Omnitrix-green identity and a distinct magenta interaction glow. Music may have its own cyan/magenta personal, authored, ongoing-signal identity, including when paused; it need not inherit the broader audio-system green. Exact media allocations remain under their specific contracts.
+
+### 8.2 // NUMERICAL RANGE AND INTERPOLATION GRAMMAR
+
+The default ordered relational range palette is:
+
+**White → Yellow → (Green) → [Omnitrix] → [Cyan] → (Blue) → Orange → Magenta → Red**
+
+Parentheses indicate optional related-family stops (Green and Blue); bracketed Omnitrix and Cyan identify their principal green/cyan family representatives, not universal mandatory stops. Family variants may be omitted or substituted according to the represented relationship.
+
+**Orange may occupy either of two positions:** beside Yellow *or* after the cyan/blue family. This is relocation, **not duplication**: a single ramp must not include Orange in both places. Moving Orange earlier can avoid undesired greenish blended intermediate colors when interpolating from cyan toward orange; such blends are not forbidden if they work in context.
+
+- Place **Cyan** at a sensible normal, likely, or expected operating region when the phenomenon has one; this is not necessarily the numeric midpoint.
+- For ranges without a universal normal reference (temperature is an example), **White** can serve as the default reference, and ordering may adapt to the phenomenon.
+- Smooth interpolation is normally preferred for continuous quantities where useful; stepped colors suit discrete categories or meaningful thresholds.
+- RGB/interpolated colors outside the named palette are not automatically violations. Judge the rendered path, not only endpoints.
+- Mute, unavailable, disconnected and actual fault states are **categorical conditions**, separate from numerical intensity, and may have independent foreground/glow recipes.
+- Thresholds, punctuation whiteness, sampled glow and perimeter glow may differ intentionally; do not force them to agree.
+
+**Reference implementations:** Post-Apollo's Volume module blends cyan→orange→magenta→red above initial white/cyan stages; Network currently uses stepped Wi-Fi signal tiers. Preserve the existing Wi-Fi thresholds, disconnected treatment and independent glows. A new red Wi-Fi error treatment remains **explicitly deferred**, not approved by this section.
+
+### 8.3 // COLOR RELATIONSHIPS ACROSS A COMPOSITION
+
+A module's color affects the *whole dock*, including plausible dynamic states, not just an idle screenshot. Stable cyan-family elements can balance variable telemetry. Weather's stable orange, Social's green-family position, Volume's changing range and Clock's cyan/orange choice contribute to the right-side composition. The relatively stable left side includes established Hospital magenta and Git yellow/orange relationships without requiring forced alternation.
+
+Semantically plausible recoloring or relocation may still break layout, glow density or color rhythm. Check the whole local neighbor chain before changing one item; preserve justified exceptions and don't flatten independent layers.
+
 ## 9 // MAINTENANCE, IMPLEMENTATION AND VERIFICATION
 
 - **Rule provenance:** operator icon review (23 Pass-1 and 28 Pass-2 approved entries), subsequent Windows → Tabs and Close decisions, Git/GitHub and SSH replacement selections, source inventory and consistency checks, and 2026-10-10 Hunter/exception clarifications. These are *review entries*, not unique glyph counts. The full working inventory remains a living Nurse 3a artifact.
