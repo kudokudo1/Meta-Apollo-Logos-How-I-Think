@@ -4,54 +4,24 @@
 
 ![](../BUILD/assets/design/chassis/focus-rail.svg)
 
-> **STATE //** active \~\~ **VIEW //** reading / navigation
+> **STATE //** compatibility map · **CURRENT SHARED RULES //** Syntagma
 
-// [🧭 ATLAS](../ATLAS/) \~\~ // [✮˙๋࣭⭑ MODEL](../MODEL/) \~\~ // [🖨 BUILD](../BUILD/) \~\~ // [⚒ DEV](../DEV/) \~\~ // **[🖳 OPERATE](../OPERATE/)** \~\~ // [⊹ ࣪ℼ˖ EVIDENCE](../EVIDENCE/) \~\~ // [࣪⋅˚🕮‧₊˚ ARCHIVE](../ARCHIVE/)
+This older How I Think OPERATE room preserves incoming links but no longer owns shared AI collaboration, Hospital, visual or runtime working rules. Start with [Syntagma's current OPERATE map](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/README.md).
 
----
+### 🧭 CURRENT CANONICAL RULES
 
-### ★⋆˙ CORE // WHAT THIS ROOM IS
+- [WORKING-WITH-ME.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/WORKING-WITH-ME.md)
+- [AUTHORITY-AND-PERMISSIONS.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/AUTHORITY-AND-PERMISSIONS.md)
+- [DEBUGGING-AND-PLANNING.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/DEBUGGING-AND-PLANNING.md)
+- [COMMAND-ENVIRONMENT.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/COMMAND-ENVIRONMENT.md)
+- [POST-APOLLO-WORKING-GUIDE.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-WORKING-GUIDE.md)
+- [POST-APOLLO-ICON-GRAMMAR.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/POST-APOLLO-ICON-GRAMMAR.md)
+- [CONTROL-SURFACES.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/CONTROL-SURFACES.md)
+- [DESKTOP-LIFECYCLE.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/DESKTOP-LIFECYCLE.md)
+- [HOSPITAL-AGENT-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-AGENT-PROTOCOL.md)
+- [HOSPITAL-ORGANIZATION-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-ORGANIZATION-PROTOCOL.md)
+- [HOSPITAL-REPORT-PROTOCOL.md](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/HOSPITAL-REPORT-PROTOCOL.md)
 
-OPERATE is the practical interface for working with the user and the systems around them. It turns the descriptive model into bounded collaboration, authority, debugging, planning, environment, Post-Apollo, control-surface, and Hospital behavior.
+### 🧭 PERSONAL SOURCES
 
-### 🖳 CONTENTS // CURRENT
-
-- how to read and navigate the model
-- AI / agent entry through [../AGENTS.md](../AGENTS.md)
-- [working with me](./WORKING-WITH-ME.md)
-- [authority and permission boundaries](./AUTHORITY-AND-PERMISSIONS.md)
-- [debugging and planning](./DEBUGGING-AND-PLANNING.md)
-- [command / environment conventions](./COMMAND-ENVIRONMENT.md)
-- [Post-Apollo working guidance](./POST-APOLLO-WORKING-GUIDE.md)
-- [Post-Apollo icon and symbol grammar](./POST-APOLLO-ICON-GRAMMAR.md) — operator-approved identities, animated families, contextual exceptions, and source/runtime boundaries
-- [Git / Hospital / PX / Dev Exp control-surface guidance](./CONTROL-SURFACES.md)
-- [desktop lifecycle / startup / health boundaries](./DESKTOP-LIFECYCLE.md)
-- [Hospital organization protocol](./HOSPITAL-ORGANIZATION-PROTOCOL.md) — ten roles, Teams, leadership jurisdictions, context budgets, succession, Proxy Doctor
-- [Hospital-compatible browser-agent protocol](./HOSPITAL-AGENT-PROTOCOL.md) and [report protocol](./HOSPITAL-REPORT-PROTOCOL.md)
-
-### ⌯✦ PROMOTION QUEUE // NEXT
-
-The following current-facing documents will be promoted here from existing sources without deleting their provenance:
-
-1. ~~`WORKING-WITH-ME.md`~~ — promoted
-2. ~~`AUTHORITY-AND-PERMISSIONS.md`~~ — promoted
-3. ~~`DEBUGGING-AND-PLANNING.md`~~ — promoted
-4. ~~`COMMAND-ENVIRONMENT.md`~~ — promoted
-5. ~~`POST-APOLLO-WORKING-GUIDE.md`~~ — promoted
-6. ~~`CONTROL-SURFACES.md`~~ — promoted / expanding
-7. ~~`HOSPITAL-AGENT-PROTOCOL.md`~~ — promoted
-8. ~~`HOSPITAL-REPORT-PROTOCOL.md`~~ — promoted
-
-The source inventory lives in [ATLAS // SOURCE MAP](../ATLAS/SOURCE-MAP.md).
-
-## 🧭 MAP // WHERE TO GO NEXT
-
-![](../BUILD/assets/design/chassis/nav-rail.svg)
-
-- **ATLAS** orientation
-- **MODEL** current map
-- **BUILD** published artifact
-- **DEV** maintenance
-- **OPERATE** reading path
-- **EVIDENCE** support / challenge
-- **ARCHIVE** archaeology
+[How I Think public model](../HOW-I-THINK-PUBLIC.md) · [original reasoning archaeology](../dump/) · [source-map transition history](../ARCHIVE/2026-10-15-pre-split-syntagma-source-map.md)
