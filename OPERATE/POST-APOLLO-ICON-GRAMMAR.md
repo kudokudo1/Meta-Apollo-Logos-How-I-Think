@@ -153,7 +153,7 @@ A non-clickable **running-hunt status title** remains a separate pending design 
 
 ## 8 // COLOR AND INTERACTION ARE INDEPENDENT AXES
 
-This contract supplements—does not replace—the operator's [color-family recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/MODEL/components/visual-language-recipes.md). Specialized icon/glow identity can remain stable through interaction while a yellow selected fill or red destructive treatment communicates state. Do not convert every selected character to orange or homogenize deliberate magenta/green/cyan contrast.
+This shared operator-level rule governs relational color meaning; the [Post-Apollo visual-language recipes](https://github.com/kudokudo1/The-Post-Apollo-Project/blob/main/MODEL/components/visual-language-recipes.md) govern project-specific QML effects, numerical recipes and recorded exceptions. Specialized icon/glow identity can remain stable through interaction while a yellow selected fill or red destructive treatment communicates state. Do not convert every selected character to orange or homogenize deliberate magenta/green/cyan contrast.
 
 Preserve front/back glow order, separate text shadows, font-size differences, transparent positioning and stage-specific color treatment. If the glyph appears wrong, test the rendering instead of assuming its Unicode or decoration was mistaken.
 
