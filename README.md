@@ -26,7 +26,7 @@ A living map of the relationship between an artist and the models he uses to und
 
 The existing public model and `dump/` archaeology remain in place.
 
-This repository is the **personal How I Think / Poioumenon model and evidence interface**. The shared agent/operator contract has a [dedicated canonical home in Syntagma](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma). The previous OPERATE rule copies remain readable for migration provenance and existing links, not as independent governing editions.
+This repository is the **personal How I Think / Poioumenon model and evidence interface**. The shared agent/operator contract has a [dedicated canonical home in Syntagma](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma). Legacy OPERATE paths now provide compatibility pointers to the dedicated Syntagma rules. Earlier full texts remain in Git history, and the original source map is preserved in the archive.
 
 ### ⌯✦ START // PICK THE PATH YOU NEED
 
@@ -34,8 +34,8 @@ This repository is the **personal How I Think / Poioumenon model and evidence in
 |---|---|
 | Understand how I think / communicate | [HOW-I-THINK-PUBLIC.md](./HOW-I-THINK-PUBLIC.md) |
 | Enter as an AI / agent | [Syntagma AGENTS](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/AGENTS.md) |
-| See practical working guidance | [OPERATE](./OPERATE/) |
-| See where the rules came from | [ATLAS // SOURCE MAP](./ATLAS/SOURCE-MAP.md) |
+| See practical working guidance | [Syntagma OPERATE](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/OPERATE/README.md) |
+| See where the rules came from | [Syntagma source map](https://github.com/kudokudo1/Meta-Apollo-Logos-Syntagma/blob/main/ATLAS/SOURCE-MAP.md) and [pre-split archive](./ARCHIVE/2026-10-15-pre-split-syntagma-source-map.md) |
 | Inspect deep history / provenance | [dump/](./dump/) |
 
 > **Skim first. Descend only when the task needs deeper context.**
