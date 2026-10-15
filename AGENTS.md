@@ -120,6 +120,12 @@ Report uncertainty plainly.
 
 Preserve provenance and important decision history.
 
+## DOCUMENTATION AUTHORITY // CHECK BEFORE WRITING RULES
+
+The current repository is the **Syntagma** rules and AI/operator-interface workstream during its ongoing name migration. The separate author/evidence work is **Poioumenon (Ποιούμενον) / How I Think**; overlap during migration is intentional, not an invitation to delete or synchronize the two models blindly. Do not rename repositories, relocate author evidence, or silently promote a draft rule.
+
+Before adding a rule to any Meta Apollo project: read the [authority and provenance map](./ATLAS/SOURCE-MAP.md) and the [documentation placement / classification workflow](./OPERATE/POST-APOLLO-WORKING-GUIDE.md#documentation-ownership--placement). Follow the canonical source; link instead of copying. Preserve the operator's informal input and organize it on their behalf. Check active ownership/PRs before moving any file.
+
 ## DEEPER CONTEXT
 
 Start with:
