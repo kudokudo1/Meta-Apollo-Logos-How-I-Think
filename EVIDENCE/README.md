@@ -17,6 +17,7 @@ This room provides the semantic **EVIDENCE** view while preserving the existing 
 ### ⊹ ࣪ℼ˖ CONTENTS // CURRENT
 
 - curated observations and proof stories supporting or challenging the current map
+- [November 27, 2026 — Cross-domain traversal and the agreed handshake](./2026-11-27-reciprocity-cross-domain-traversal.md) — selected conversation evidence; linked philosophical model
 
 ## 🧭 MAP // WHERE TO GO NEXT
 
